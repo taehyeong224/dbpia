@@ -64,8 +64,6 @@ public class GoogleController {
         }catch (HttpClientErrorException e) {
             System.out.println("오류다 : " + e.getStatusCode() + ": " + e.getStatusText());
         }
-        //api에서 가져온 정보.
-        //db에 있는 정보
         return "google/getJson";
     }
 
