@@ -10,13 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
+    StringSimilarity stringSimilarity = new StringSimilarity();
     DbpiaController dbpiaController = new DbpiaController();
     GoogleController googleController = new GoogleController();
     List<ItemType> itemTypes;
@@ -51,19 +52,24 @@ public class HomeController {
            //edit = edit.replaceAll("[?][$]\\(\\)\\{\\}[*][+]\\^[|]\\[\\]", "");
            //edit = edit.replaceAll("([).([^<]*).(])", "");
            System.out.println("edit : " + edit);
+
            google = googleController.getGoogle(edit);
            for(Result result : google.getResponseData().getResults()){
-//               if (result.getUrl().isEmpty() || result.getVisibleUrl().isEmpty() || result.getUnescapedUrl().isEmpty()){
-//                   break;
-//               }
-                 System.out.println("url : " +  result.getUrl());
-//               System.out.println("url2 : " + result.getVisibleUrl());
-//               System.out.println("url3 : " + result.getUnescapedUrl());
+                   String edit2 = result.getTitle().replaceAll("<[^>]*>", "");
+                   //stringSimilarity.printSimilarity(edit, edit2);
 
-               System.out.println();
+                   if (stringSimilarity.similarity(edit, edit2) > 0.500) {
+                       System.out.println(j);
+                       System.out.println("url : " + result.getUrl() == null ? null : result.getUrl());
+                       System.out.println("url2 : " + result.getUrl() == null ? null : result.getVisibleUrl());
+                       System.out.println("url3 : " + result.getUrl() == null ? null : result.getUnescapedUrl());
+                       System.out.println();
+                   }
+
                 j++;
            }
            System.out.println();
+           j = 0;
            i++;
        }
        return "total";
