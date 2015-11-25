@@ -43,12 +43,10 @@ public class HomeController extends Thread {
 
     @RequestMapping("total/show")
     public String total(String search) throws InterruptedException {
-
         itemTypes = dbpiaController.getDbpia(search);
-        int i = 0,j = 0;
-
        for(ItemType itemType : itemTypes){
            String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
+           String getTitle = itemType.getPublisher().getName().replaceAll("<[^>]*>", "");
            //edit = edit.replaceAll("[?][$]\\(\\)\\{\\}[*][+]\\^[|]\\[\\]", "");
            //edit = edit.replaceAll("([).([^<]*).(])", "");
            System.out.println("edit : " + edit);
@@ -56,20 +54,23 @@ public class HomeController extends Thread {
            for(Result result : google.getResponseData().getResults()){
                Thread.sleep(1000);
                    String edit2 = result.getTitle().replaceAll("<[^>]*>", "");
-
                    if (stringSimilarity.similarity(edit, edit2) > 0.500) {
-                       System.out.println(j);
+                       System.out.println("pdf url");
                        System.out.println("url : " + result.getUrl() == null ? null : result.getUrl());
-                       System.out.println("url2 : " + result.getUrl() == null ? null : result.getVisibleUrl());
                        System.out.println("url3 : " + result.getUrl() == null ? null : result.getUnescapedUrl());
-                       System.out.println();
                    }
-
-                j++;
            }
            System.out.println();
-           j = 0;
-           i++;
+           google = googleController.getGoogle(getTitle);
+           for(Result result : google.getResponseData().getResults()){
+               Thread.sleep(1000);
+               String edit2 = result.getTitle().replaceAll("<[^>]*>", "");
+               if (stringSimilarity.similarity(edit, edit2) > 0.500) {
+                   System.out.println("publisher url");
+                   System.out.println("url : " + result.getUrl() == null ? null : result.getUrl());
+                   System.out.println("url3 : " + result.getUrl() == null ? null : result.getUnescapedUrl());
+               }
+           }
        }
        return "total";
    }
