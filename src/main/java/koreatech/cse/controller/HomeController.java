@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/")
-public class HomeController {
+public class HomeController extends Thread {
     StringSimilarity stringSimilarity = new StringSimilarity();
     DbpiaController dbpiaController = new DbpiaController();
     GoogleController googleController = new GoogleController();
@@ -42,7 +42,7 @@ public class HomeController {
 
 
     @RequestMapping("total/show")
-    public String total(String search){
+    public String total(String search) throws InterruptedException {
 
         itemTypes = dbpiaController.getDbpia(search);
         int i = 0,j = 0;
@@ -52,11 +52,10 @@ public class HomeController {
            //edit = edit.replaceAll("[?][$]\\(\\)\\{\\}[*][+]\\^[|]\\[\\]", "");
            //edit = edit.replaceAll("([).([^<]*).(])", "");
            System.out.println("edit : " + edit);
-
            google = googleController.getGoogle(edit);
            for(Result result : google.getResponseData().getResults()){
+               Thread.sleep(1000);
                    String edit2 = result.getTitle().replaceAll("<[^>]*>", "");
-                   //stringSimilarity.printSimilarity(edit, edit2);
 
                    if (stringSimilarity.similarity(edit, edit2) > 0.500) {
                        System.out.println(j);
