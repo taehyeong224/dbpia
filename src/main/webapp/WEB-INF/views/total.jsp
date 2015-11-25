@@ -16,5 +16,8 @@
   검색어 : <input type="text" name="search">
   <input type="submit">
 </form>
+<c:forEach var="m" items="${naver}">
+  ${m}<br/><br/>
+</c:forEach>
 </body>
 </html>
