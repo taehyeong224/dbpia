@@ -16,7 +16,7 @@ import java.util.List;
 public class NaverController {
 
     public String naverURL = "http://openapi.naver.com/search";
-    public String naverKEY = "c1b406b32dbbbbeee5f2a36ddc14067f";
+    public String naverKEY = "0490c1442fae0f9657ae2104e0bd3588";
 
     List<ItemType> itemTypes;
     public List<ItemType> getNaver(String search) {

@@ -61,6 +61,7 @@ public class HomeController extends Thread {
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
             //Workflow workflow = WorkflowFactory.getPredefinedWorkflow(3);
+            // 이 라인부터는  문자열의 형태소 분리를 통해 명사를 추출하고 명사에 대해서만 책검색을 하는 기능.
             Workflow workflow = new Workflow(path + "/");
             workflow.setMorphAnalyzer(new ChartMorphAnalyzer(), "conf/plugin/MajorPlugin/MorphAnalyzer/ChartMorphAnalyzer.json");
             workflow.setPosTagger(new HMMTagger(), "conf/plugin/MajorPlugin/PosTagger/HmmPosTagger.json");
@@ -86,25 +87,27 @@ public class HomeController extends Thread {
                             for(j = 0; j < morphemes.length; ++j) {
                                 System.out.print("검색어 : " + morphemes[j]);
                                 System.out.println();
-                                naverItemTypes= naverController.getNaver(morphemes[j]);
-                                for(koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes){
-                                    if(itemType1.getLink() == null || itemType1.getPrice() == null){
-                                        break;
+                                //2글자 이상 검색
+                                if(morphemes[j].length() > 2) {
+                                    naverItemTypes = naverController.getNaver(morphemes[j]);
+                                    for (koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes) {
+                                        if (itemType1.getLink() == null || itemType1.getPrice() == null) {
+                                            break;
+                                        }
+                                        System.out.println("link : " + itemType1.getLink());
+                                        System.out.println("description : " + itemType1.getDescription());
+                                        System.out.println("Title : " + itemType1.getTitle());
+                                        System.out.println("Author : " + itemType1.getAuthor());
+                                        System.out.println("discout : " + itemType1.getDiscount());
+                                        System.out.println("Image : " + itemType1.getImage());
+                                        System.out.println("Isbn : " + itemType1.getIsbn());
+                                        System.out.println("Price : " + itemType1.getPrice());
+                                        System.out.println("Pubdate : " + itemType1.getPubdate());
+                                        System.out.println("Publisher : " + itemType1.getPublisher());
                                     }
-                                    System.out.println("link : " + itemType1.getLink());
-                                    System.out.println("description : " + itemType1.getDescription());
-                                    System.out.println("Title : " + itemType1.getTitle());
-                                    System.out.println("Author : " + itemType1.getAuthor());
-                                    System.out.println("discout : " + itemType1.getDiscount());
-                                    System.out.println("Image : " + itemType1.getImage());
-                                    System.out.println("Isbn : " + itemType1.getIsbn());
-                                    System.out.println("Price : " + itemType1.getPrice());
-                                    System.out.println("Pubdate : " + itemType1.getPubdate());
-                                    System.out.println("Publisher : " + itemType1.getPublisher());
+                                    System.out.println();
+
                                 }
-                                System.out.println();
-
-
                             }
                         }
                     }
