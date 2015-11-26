@@ -1,3 +1,14 @@
+/target
+*.class
+Thumbs.db
+.classpath*
+/bin
+*.java.hsp
+.DS_Store
+.springBeans
+.externalToolBuilders
+/src/main/resources/dev/*
+/src/main/resources/prod/*
+/src/main/resources/common/rebel.xml
 .idea/*
-target/*
-resources/dev/*
+*.iml
