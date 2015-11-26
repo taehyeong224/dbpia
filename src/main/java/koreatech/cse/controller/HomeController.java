@@ -4,14 +4,16 @@ import koreatech.cse.controller.dbpia.DbpiaController;
 import koreatech.cse.controller.naver.NaverController;
 import koreatech.cse.domain.dbpia.ItemType;
 import kr.ac.kaist.swrc.jhannanum.hannanum.Workflow;
+import kr.ac.kaist.swrc.jhannanum.plugin.MajorPlugin.MorphAnalyzer.ChartMorphAnalyzer.ChartMorphAnalyzer;
+import kr.ac.kaist.swrc.jhannanum.plugin.MajorPlugin.PosTagger.HmmPosTagger.HMMTagger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 import kr.ac.kaist.swrc.jhannanum.comm.Eojeol;
 import kr.ac.kaist.swrc.jhannanum.comm.Sentence;
+import kr.ac.kaist.swrc.jhannanum.hannanum.Workflow;
 import kr.ac.kaist.swrc.jhannanum.hannanum.WorkflowFactory;
 
 
@@ -50,11 +52,18 @@ public class HomeController extends Thread {
     @RequestMapping("total/show")
     public String total(String search,Model model) throws InterruptedException {
         DbpiaItemTypes = dbpiaController.getDbpia(search);
+        String path = this.getClass().getResource("").getPath();
+        System.out.println("path : " + path);
+        int index = path.indexOf("/target");
+        path = path.substring(0, index);
+        System.out.println("path : " + path);
         for(ItemType itemType : DbpiaItemTypes){
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
-            Workflow workflow = WorkflowFactory.getPredefinedWorkflow(3);
-
+            //Workflow workflow = WorkflowFactory.getPredefinedWorkflow(3);
+            Workflow workflow = new Workflow(path + "/");
+            workflow.setMorphAnalyzer(new ChartMorphAnalyzer(), "conf/plugin/MajorPlugin/MorphAnalyzer/ChartMorphAnalyzer.json");
+            workflow.setPosTagger(new HMMTagger(), "conf/plugin/MajorPlugin/PosTagger/HmmPosTagger.json");
             try {
                 workflow.activateWorkflow(true);
                 String e = edit;

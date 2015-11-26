@@ -7,6 +7,11 @@ import kr.ac.kaist.swrc.jhannanum.comm.Eojeol;
 import kr.ac.kaist.swrc.jhannanum.comm.Sentence;
 import kr.ac.kaist.swrc.jhannanum.hannanum.Workflow;
 import kr.ac.kaist.swrc.jhannanum.hannanum.WorkflowFactory;
+import kr.ac.kaist.swrc.jhannanum.plugin.MajorPlugin.MorphAnalyzer.ChartMorphAnalyzer.ChartMorphAnalyzer;
+import kr.ac.kaist.swrc.jhannanum.plugin.MajorPlugin.PosTagger.HmmPosTagger.HMMTagger;
+import kr.ac.kaist.swrc.jhannanum.plugin.SupplementPlugin.MorphemeProcessor.UnknownMorphProcessor.UnknownProcessor;
+import kr.ac.kaist.swrc.jhannanum.plugin.SupplementPlugin.PlainTextProcessor.InformalSentenceFilter.InformalSentenceFilter;
+import kr.ac.kaist.swrc.jhannanum.plugin.SupplementPlugin.PlainTextProcessor.SentenceSegmentor.SentenceSegmentor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.inject.Inject;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +43,79 @@ public class JHanNanum {
 
     @Before
     public void setup() {}
+
+    @Test
+    public void test(){
+        Workflow workflow = new Workflow();
+
+        try {
+			/* Setting up the work flow */
+			/* Phase1. Supplement Plug-in for analyzing the plain text */
+            workflow.appendPlainTextProcessor(new SentenceSegmentor(), null);
+            workflow.appendPlainTextProcessor(new InformalSentenceFilter(), null);
+
+			/* Phase2. Morphological Analyzer Plug-in and Supplement Plug-in for post processing */
+            workflow.setMorphAnalyzer(new ChartMorphAnalyzer(), "conf/plugin/MajorPlugin/MorphAnalyzer/ChartMorphAnalyzer.json");
+            workflow.appendMorphemeProcessor(new UnknownProcessor(), null);
+
+			/*
+			 * For simpler morphological analysis result with 22 tags, decomment the following line.
+			 * Notice: If you use SimpleMAResult22 plug-in, POSTagger will not work correctly.
+			 *         So don't add phase3 plug-ins after SimpleMAResult22.
+			 */
+//			workflow.appendMorphemeProcessor(new SimpleMAResult22(), null);
+
+			/*
+			 * For simpler morphological analysis result with 9 tags, decomment the following line.
+			 * Notice: If you use SimpleMAResult09 plug-in, POSTagger will not work correctly.
+			 *         So don't add phase3 plug-ins after SimpleMAResult09.
+			 */
+//			workflow.appendMorphemeProcessor(new SimpleMAResult09(), null);
+
+			/* Phase3. Part Of Speech Tagger Plug-in and Supplement Plug-in for post processing */
+            workflow.setPosTagger(new HMMTagger(), "conf/plugin/MajorPlugin/PosTagger/HmmPosTagger.json");
+
+			/* For extracting nouns only, decomment the following line. */
+//			workflow.appendPosProcessor(new NounExtractor(), null);
+
+			/* For simpler POS tagging result with 22 tags, decomment the following line. */
+//			workflow.appendPosProcessor(new SimplePOSResult22(), null);
+
+			/* For simpler POS tagging result with 9 tags, decomment the following line. */
+//			workflow.appendPosProcessor(new SimplePOSResult09(), null);
+
+			/* Activate the work flow in the thread mode */
+            workflow.activateWorkflow(true);
+
+			/* Analysis using the work flow */
+            String document = "한나눔 형태소 분석기는 KLDP에서 제공하는 공개 소프트웨어 프로젝트 사이트에 등록되어 있다.";
+
+            workflow.analyze(document);
+            System.out.println("document : " + workflow.getResultOfDocument());
+
+			/* Once a work flow is activated, it can be used repeatedly. */
+            document = "日時: 2010년 7월 30일 오후 1시\n"
+                    + "場所: Coex Conference Room\n";
+
+            workflow.analyze(document);
+            System.out.println(workflow.getResultOfDocument());
+
+			/* Close the work flow */
+            workflow.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+		/* Shutdown the workflow */
+        workflow.close();
+    }
 
     @Test
     public void mvcTest() {
