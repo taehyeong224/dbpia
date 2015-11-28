@@ -17,6 +17,7 @@ import kr.ac.kaist.swrc.jhannanum.hannanum.Workflow;
 import kr.ac.kaist.swrc.jhannanum.hannanum.WorkflowFactory;
 
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,8 +28,9 @@ public class HomeController extends Thread {
     StringSimilarity stringSimilarity = new StringSimilarity();
     DbpiaController dbpiaController = new DbpiaController();
     NaverController naverController = new NaverController();
+    HashSet<String> set = new HashSet<String>();
 
-    List<koreatech.cse.domain.naver.ItemType> naverItemTypes;
+    List<koreatech.cse.domain.naver.ItemType> naverItemTypes = null;
     List<ItemType> DbpiaItemTypes;
 
     @RequestMapping("/")
@@ -85,35 +87,15 @@ public class HomeController extends Thread {
                         if(eojeolArray[i].length > 0) {
                             morphemes = eojeolArray[i].getMorphemes();
                             for(j = 0; j < morphemes.length; ++j) {
-                                System.out.print("검색어 : " + morphemes[j]);
+                                set.add(morphemes[j]);
+                                System.out.print("형태소 : " + morphemes[j]);
                                 System.out.println();
                                 //2글자 이상 검색
-                                if(morphemes[j].length() > 2) {
-                                    naverItemTypes = naverController.getNaver(morphemes[j]);
-                                    for (koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes) {
-                                        if (itemType1.getLink() == null || itemType1.getPrice() == null) {
-                                            break;
-                                        }
-                                        System.out.println("link : " + itemType1.getLink());
-                                        System.out.println("description : " + itemType1.getDescription());
-                                        System.out.println("Title : " + itemType1.getTitle());
-                                        System.out.println("Author : " + itemType1.getAuthor());
-                                        System.out.println("discout : " + itemType1.getDiscount());
-                                        System.out.println("Image : " + itemType1.getImage());
-                                        System.out.println("Isbn : " + itemType1.getIsbn());
-                                        System.out.println("Price : " + itemType1.getPrice());
-                                        System.out.println("Pubdate : " + itemType1.getPubdate());
-                                        System.out.println("Publisher : " + itemType1.getPublisher());
-                                    }
-                                    System.out.println();
 
-                                }
                             }
                         }
                     }
                 }
-
-                System.out.println();
                 workflow.close();
             } catch (Exception var10) {
                 var10.printStackTrace();
@@ -125,6 +107,36 @@ public class HomeController extends Thread {
 		/* Shutdown the work flow */
             workflow.close();
         }
+
+        System.out.println("집합 : " + set);
+        for(String str : set) {
+            if (str.length() > 2) {
+                System.out.println("검색어 : " + str);
+                naverItemTypes = naverController.getNaver(str);
+                System.out.println("naverItemTypes : " + naverItemTypes);
+                if (naverItemTypes != null) {
+                    for (koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes) {
+                        if (itemType1.getLink() == null || itemType1.getPrice() == null || itemType1 == null) {
+                            break;
+                        }
+                        System.out.println("link : " + itemType1.getLink());
+                        System.out.println("description : " + itemType1.getDescription());
+                        System.out.println("Title : " + itemType1.getTitle());
+                        System.out.println("Author : " + itemType1.getAuthor());
+                        System.out.println("discout : " + itemType1.getDiscount());
+                        System.out.println("Image : " + itemType1.getImage());
+                        System.out.println("Isbn : " + itemType1.getIsbn());
+                        System.out.println("Price : " + itemType1.getPrice());
+                        System.out.println("Pubdate : " + itemType1.getPubdate());
+                        System.out.println("Publisher : " + itemType1.getPublisher());
+                    }
+                }
+                System.out.println();
+            }
+        }
+
+
+
        return "total";
    }
 }
