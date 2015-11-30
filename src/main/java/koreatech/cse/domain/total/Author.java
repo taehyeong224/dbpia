@@ -10,6 +10,12 @@ public class Author {
     private String name;
     private String url;
 
+    public Author() {
+        this.order = null;
+        this.name = null;
+        this.url = null;
+    }
+
     @Override
     public String toString() {
         return "Author{" +

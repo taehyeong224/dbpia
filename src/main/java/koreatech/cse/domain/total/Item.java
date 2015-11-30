@@ -15,6 +15,19 @@ public class Item {
     private Publication publication;
     private Books books;
 
+    public Item() {
+        this.ctype = null;
+        this.title = null;
+        this.authors = null;
+        this.pages = null;
+        this.preview = null;
+        this.link_url = null;
+        this.link_api = null;
+        this.publisher = null;
+        this.publication = null;
+        this.books = null;
+    }
+
     @Override
     public String toString() {
         return "Item{" +

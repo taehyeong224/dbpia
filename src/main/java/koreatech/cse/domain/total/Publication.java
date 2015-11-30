@@ -17,6 +17,12 @@ public class Publication {
                 '}';
     }
 
+    public Publication() {
+        this.issn = null;
+        this.url = null;
+        this.name = null;
+    }
+
     public String getIssn() {
         return issn;
     }

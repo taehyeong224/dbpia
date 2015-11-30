@@ -8,6 +8,10 @@ import java.util.List;
 public class Authors {
     private List<Author> authors;
 
+    public Authors() {
+        this.authors = null;
+    }
+
     @Override
     public String toString() {
         return "Author{" +

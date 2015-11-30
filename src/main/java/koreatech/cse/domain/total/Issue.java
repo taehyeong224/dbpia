@@ -9,6 +9,12 @@ public class Issue {
     private String num;
     private String yymm;
 
+    public Issue() {
+        this.name =  null;
+        this.num = null;
+        this.yymm = null;
+    }
+
     @Override
     public String toString() {
         return "Issue{" +

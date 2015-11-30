@@ -11,6 +11,19 @@ public class Book {
     protected String price;
     protected String discount;
 
+    public Book() {
+        this.title = null;
+        this.link = null;
+        this.image = null;
+        this.author = null;
+        this.price = null;
+        this.discount = null;
+        this.publisher = null;
+        this.pubdate = null;
+        this.isbn = null;
+        this.description = null;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

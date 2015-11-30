@@ -17,6 +17,10 @@ public class Result {
         return items;
     }
 
+    public Result() {
+        this.items = null;
+    }
+
     public void setItems(Items items) {
         this.items = items;
     }

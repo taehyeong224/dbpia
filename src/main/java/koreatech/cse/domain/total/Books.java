@@ -8,6 +8,10 @@ import java.util.List;
 public class Books {
     private List<Book> books;
 
+    public Books() {
+        this.books = null;
+    }
+
     @Override
     public String toString() {
         return "Books{" +

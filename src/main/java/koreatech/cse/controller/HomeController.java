@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -48,16 +49,16 @@ public class HomeController extends Thread {
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
-        List<Item> itemList  = null;
+        List<Item> itemList  = new ArrayList<>();
         Item item = new Item();
         Authors authors = new Authors();
-        List<Author> authorList = null;
+        List<Author> authorList = new ArrayList<>();
         Author author = new Author();
         Publication publication = new Publication();
         Publisher publisher = new Publisher();
         Book book = new Book();
         Books books = new Books();
-        List<Book> bookList = null;
+        List<Book> bookList = new ArrayList<>();
 
         total.setKeyword(search);
         DbpiaItemTypes = dbpiaController.getDbpia(search);

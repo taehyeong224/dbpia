@@ -22,4 +22,8 @@ public class Items {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public Items() {
+        this.items = null;
+    }
 }
