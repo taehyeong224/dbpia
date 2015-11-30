@@ -28,7 +28,9 @@ public class NaverController {
                     .queryParam("key", naverKEY)
                     .queryParam("query", search)
                     .queryParam("display", 10)
-                    .queryParam("target", "book");
+                    .queryParam("target", "book")
+                    .queryParam("d_catg",280);
+
 
             System.out.println("Naver API : " + builder.build().encode().toUri());
 

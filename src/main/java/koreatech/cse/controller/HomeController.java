@@ -3,22 +3,15 @@ package koreatech.cse.controller;
 import koreatech.cse.controller.dbpia.DbpiaController;
 import koreatech.cse.controller.naver.NaverController;
 import koreatech.cse.domain.dbpia.ItemType;
-import kr.ac.kaist.swrc.jhannanum.hannanum.Workflow;
-import kr.ac.kaist.swrc.jhannanum.plugin.MajorPlugin.MorphAnalyzer.ChartMorphAnalyzer.ChartMorphAnalyzer;
-import kr.ac.kaist.swrc.jhannanum.plugin.MajorPlugin.PosTagger.HmmPosTagger.HMMTagger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import kr.ac.kaist.swrc.jhannanum.comm.Eojeol;
-import kr.ac.kaist.swrc.jhannanum.comm.Sentence;
-
 
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Controller
 @RequestMapping("/")
@@ -52,58 +45,13 @@ public class HomeController extends Thread {
     @RequestMapping("total/show")
     public String total(String search,Model model) throws InterruptedException {
         DbpiaItemTypes = dbpiaController.getDbpia(search);
-        String path = this.getClass().getResource("").getPath();
-        System.out.println("path : " + path);
-        int index = path.indexOf("/target");
-        path = path.substring(0, index);
-        System.out.println("path : " + path);
         for(ItemType itemType : DbpiaItemTypes){
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
-            //Workflow workflow = WorkflowFactory.getPredefinedWorkflow(3);
-            // 이 라인부터는  문자열의 형태소 분리를 통해 명사를 추출하고 명사에 대해서만 책검색을 하는 기능.
-            Workflow workflow = new Workflow(path + "/");
-            workflow.setMorphAnalyzer(new ChartMorphAnalyzer(), "conf/plugin/MajorPlugin/MorphAnalyzer/ChartMorphAnalyzer.json");
-            workflow.setPosTagger(new HMMTagger(), "conf/plugin/MajorPlugin/PosTagger/HmmPosTagger.json");
-            try {
-                workflow.activateWorkflow(true);
-                String e = edit;
-                workflow.analyze(e);
-                LinkedList resultList = workflow.getResultOfDocument(new Sentence(0, 0, false));
-                Iterator var5 = resultList.iterator();
-
-                Sentence s;
-                Eojeol[] eojeolArray;
-                int i;
-                String[] morphemes;
-                int j;
-                while(var5.hasNext()) {
-                    s = (Sentence)var5.next();
-                    eojeolArray = s.getEojeols();
-
-                    for(i = 0; i < eojeolArray.length; ++i) {
-                        if(eojeolArray[i].length > 0) {
-                            morphemes = eojeolArray[i].getMorphemes();
-                            for(j = 0; j < morphemes.length; ++j) {
-                                set.add(morphemes[j]);
-                                System.out.print("형태소 : " + morphemes[j]);
-                                System.out.println();
-                                //2글자 이상 검색
-
-                            }
-                        }
-                    }
-                }
-                workflow.close();
-            } catch (Exception var10) {
-                var10.printStackTrace();
-                System.exit(0);
+            StringTokenizer st = new StringTokenizer(edit," ");
+            while(st.hasMoreTokens()) {
+                set.add(st.nextToken());
             }
-
-            workflow.close();
-
-		/* Shutdown the work flow */
-            workflow.close();
         }
 
         System.out.println("집합 : " + set);
@@ -135,6 +83,6 @@ public class HomeController extends Thread {
 
 
 
-       return "total";
-   }
+        return "total";
+    }
 }
