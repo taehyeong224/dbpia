@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07e8bfca-f6dd-4645-b7f6-aebe91b9fc0e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/controller/google/GoogleController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/domain/google/Cursor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/domain/google/Google.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/domain/google/Page.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/domain/google/ResponseData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/domain/google/Result.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/koreatech/cse/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/koreatech/cse/controller/HomeController.java" />
-    </list>
+    <list default="true" id="07e8bfca-f6dd-4645-b7f6-aebe91b9fc0e" name="Default" comment="" />
     <ignored path="wsc.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1282,12 +1273,12 @@
       <workItem from="1448435920937" duration="2759000" />
       <workItem from="1448438873045" duration="12169000" />
       <workItem from="1448702369422" duration="4458000" />
-      <workItem from="1448861482454" duration="290000" />
+      <workItem from="1448861482454" duration="339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99583000" />
+    <option name="totallyTimeSpent" value="99632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="23" width="1881" height="1057" extended-state="6" />
