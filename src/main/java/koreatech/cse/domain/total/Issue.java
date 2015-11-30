@@ -9,6 +9,12 @@ public class Issue {
     private String num;
     private String yymm;
 
+    public Issue(String name, String num, String yymm) {
+        this.name = name;
+        this.num = num;
+        this.yymm = yymm;
+    }
+
     public Issue() {
         this.name =  null;
         this.num = null;

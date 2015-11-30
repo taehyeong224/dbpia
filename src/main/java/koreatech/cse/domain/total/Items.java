@@ -23,6 +23,10 @@ public class Items {
         this.items = items;
     }
 
+    public Items(List<Item> items) {
+        this.items = items;
+    }
+
     public Items() {
         this.items = null;
     }

@@ -10,6 +10,17 @@ public class Author {
     private String name;
     private String url;
 
+    public Author(String order, String name, String url) {
+        this.order = order;
+        this.name = name;
+        this.url = url;
+    }
+
+    public Author(String order) {
+
+        this.order = order;
+    }
+
     public Author() {
         this.order = null;
         this.name = null;

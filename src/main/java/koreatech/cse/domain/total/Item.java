@@ -15,6 +15,19 @@ public class Item {
     private Publication publication;
     private Books books;
 
+    public Item(String ctype, String title, Authors authors, String pages, String preview, String link_url, String link_api, Publisher publisher, Publication publication, Books books) {
+        this.ctype = ctype;
+        this.title = title;
+        this.authors = authors;
+        this.pages = pages;
+        this.preview = preview;
+        this.link_url = link_url;
+        this.link_api = link_api;
+        this.publisher = publisher;
+        this.publication = publication;
+        this.books = books;
+    }
+
     public Item() {
         this.ctype = null;
         this.title = null;

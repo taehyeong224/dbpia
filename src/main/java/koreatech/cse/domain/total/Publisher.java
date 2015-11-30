@@ -19,6 +19,11 @@ public class Publisher {
         return url;
     }
 
+    public Publisher(String url, String name) {
+        this.url = url;
+        this.name = name;
+    }
+
     public Publisher() {
         this.url = null;
         this.name = null;

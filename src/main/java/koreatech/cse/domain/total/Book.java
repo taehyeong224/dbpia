@@ -11,6 +11,19 @@ public class Book {
     protected String price;
     protected String discount;
 
+    public Book(String title, String link, String image, String author, String price, String discount, String publisher, String pubdate, String isbn, String description) {
+        this.title = title;
+        this.link = link;
+        this.image = image;
+        this.author = author;
+        this.price = price;
+        this.discount = discount;
+        this.publisher = publisher;
+        this.pubdate = pubdate;
+        this.isbn = isbn;
+        this.description = description;
+    }
+
     public Book() {
         this.title = null;
         this.link = null;

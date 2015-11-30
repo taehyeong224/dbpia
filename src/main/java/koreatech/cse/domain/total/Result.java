@@ -17,6 +17,10 @@ public class Result {
         return items;
     }
 
+    public Result(Items items) {
+        this.items = items;
+    }
+
     public Result() {
         this.items = null;
     }

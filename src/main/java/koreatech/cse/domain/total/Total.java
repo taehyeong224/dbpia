@@ -7,6 +7,11 @@ public class Total {
     private String keyword;
     private Result result;
 
+    public Total(String keyword, Result result) {
+        this.keyword = keyword;
+        this.result = result;
+    }
+
     public Total() {
         this.keyword = null;
         this.result = null;

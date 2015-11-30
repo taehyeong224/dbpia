@@ -44,14 +44,14 @@ public class HomeController extends Thread {
         return "total";
     }
 
-    @RequestMapping(value = "total/show" , method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "total/show" , method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public ResponseEntity<Total> total(String search) throws InterruptedException {
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
         List<Item> itemList  = new ArrayList<>();
         Item item = new Item();
-        Authors authors = new Authors();
+
         List<Author> authorList = new ArrayList<>();
         Author author = new Author();
         Publication publication = new Publication();
@@ -65,6 +65,7 @@ public class HomeController extends Thread {
 
 
         for(ItemType itemType : DbpiaItemTypes){
+            Authors authors = new Authors();
             HashSet<String> set = new HashSet<>();
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
@@ -74,13 +75,15 @@ public class HomeController extends Thread {
             }
 
             for(AuthorType authorType : itemType.getAuthors().getAuthor()){
-                author.setUrl(authorType.getUrl());
-                author.setOrder(authorType.getOrder());
                 author.setName(authorType.getName());
+                author.setOrder(authorType.getOrder());
+                author.setUrl(authorType.getUrl());
                 authorList.add(author);
+                //authorList.add(new Author(authorType.getOrder(), authorType.getName(), authorType.getUrl()));
+                System.out.println("authorList  : " + authorList);
             }
-
             authors.setAuthors(authorList);
+
             item.setAuthors(authors);
             item.setTitle(itemType.getTitle());
             item.setCtype(itemType.getCtype());
@@ -103,43 +106,31 @@ public class HomeController extends Thread {
                 if (str.length() > 2) {
                     System.out.println("검색어 : " + str);
                     naverItemTypes = naverController.getNaver(str);
-                    System.out.println("naverItemTypes : " + naverItemTypes);
+                    //System.out.println("naverItemTypes : " + naverItemTypes);
                     if (naverItemTypes != null) {
                         for (koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes) {
                             if (itemType1.getLink() == null || itemType1.getPrice() == null || itemType1 == null) {
                                 break;
                             }
-                            System.out.println("link : " + itemType1.getLink());
-                            System.out.println("description : " + itemType1.getDescription());
-                            System.out.println("Title : " + itemType1.getTitle());
-                            System.out.println("Author : " + itemType1.getAuthor());
-                            System.out.println("discout : " + itemType1.getDiscount());
-                            System.out.println("Image : " + itemType1.getImage());
-                            System.out.println("Isbn : " + itemType1.getIsbn());
-                            System.out.println("Price : " + itemType1.getPrice());
-                            System.out.println("Pubdate : " + itemType1.getPubdate());
-                            System.out.println("Publisher : " + itemType1.getPublisher());
-
-                            book.setAuthor(itemType1.getAuthor());
-                            book.setDescription(itemType1.getDescription());
-                            book.setDiscount(itemType1.getDiscount());
-                            book.setImage(itemType1.getImage());
-                            book.setIsbn(itemType1.getIsbn());
-                            book.setLink(itemType1.getLink());
-                            book.setPrice(itemType1.getPrice());
-                            book.setPubdate(itemType1.getPubdate());
-                            book.setPublisher(itemType1.getPublisher());
-                            book.setTitle(itemType1.getTitle());
-                            bookList.add(book);
+                            bookList.add(new Book(itemType1.getTitle(),itemType1.getLink(),itemType1.getImage(),itemType1.getAuthor(),itemType1.getPrice(),itemType1.getDiscount(),itemType1.getPublisher()
+                                            ,itemType1.getPubdate(),itemType1.getIsbn(),itemType1.getDescription()));
                         }
                     }
-                    System.out.println();
+//                    System.out.println();
                 }
             }
+            System.out.println("booklist : " + bookList.size());
             books.setBooks(bookList);
+            System.out.println("books : " + books);
             item.setBooks(books);
             itemList.add(item);
             items.setItems(itemList);
+            System.out.println("itemList : " + itemList);
+
+
+            authorList.clear();
+            bookList.clear();
+            itemList.clear();
             result.setItems(items);
             total.setResult(result);
             set.clear();

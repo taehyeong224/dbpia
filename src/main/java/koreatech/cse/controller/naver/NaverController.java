@@ -27,20 +27,20 @@ public class NaverController {
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(naverURL)
                     .queryParam("key", naverKEY)
                     .queryParam("query", search)
-                    .queryParam("display", 10)
+                    .queryParam("display", 3)
                     .queryParam("target", "book")
                     .queryParam("d_catg",280);
 
 
-            System.out.println("Naver API : " + builder.build().encode().toUri());
+            //System.out.println("Naver API : " + builder.build().encode().toUri());
 
             RssType rssType = restTemplate.getForObject(builder.build().encode().toUri(),
                     RssType.class);
-            System.out.println("rss : " +  rssType);
+            //System.out.println("rss : " +  rssType);
             if (rssType.getChannel() == null)
                 return null;
             itemTypes = rssType.getChannel().getItem();
-            System.out.println("itemTypes : " + itemTypes);
+            //System.out.println("itemTypes : " + itemTypes);
 
 
             return itemTypes;
