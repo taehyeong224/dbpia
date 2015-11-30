@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import kr.ac.kaist.swrc.jhannanum.comm.Eojeol;
 import kr.ac.kaist.swrc.jhannanum.comm.Sentence;
-import kr.ac.kaist.swrc.jhannanum.hannanum.Workflow;
-import kr.ac.kaist.swrc.jhannanum.hannanum.WorkflowFactory;
 
 
 import java.util.HashSet;
