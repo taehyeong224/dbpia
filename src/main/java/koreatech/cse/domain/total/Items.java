@@ -6,28 +6,20 @@ import java.util.List;
  * Created by kth on 2015. 11. 30..
  */
 public class Items {
-    private List<Item> items;
+    private List<Item> item;
 
     @Override
     public String toString() {
         return "Items{" +
-                "items=" + items +
+                "item=" + item +
                 '}';
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Item> getItem() {
+        return item;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public Items(List<Item> items) {
-        this.items = items;
-    }
-
-    public Items() {
-        this.items = null;
+    public void setItem(List<Item> item) {
+        this.item = item;
     }
 }

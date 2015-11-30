@@ -6,28 +6,28 @@ import java.util.List;
  * Created by kth on 2015. 11. 30..
  */
 public class Books {
-    private List<Book> books;
+    private List<Book> book;
 
     public Books(List<Book> books) {
-        this.books = books;
+        this.book = books;
     }
 
     public Books() {
-        this.books = null;
+        this.book = null;
     }
 
     @Override
     public String toString() {
         return "Books{" +
-                "books=" + books +
+                "books=" + book +
                 '}';
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Book> getBook() {
+        return book;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBook(List<Book> books) {
+        this.book = books;
     }
 }

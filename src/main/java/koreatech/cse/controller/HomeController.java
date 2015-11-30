@@ -50,23 +50,24 @@ public class HomeController extends Thread {
         Result result = new Result();
         Items items = new Items();
         List<Item> itemList  = new ArrayList<>();
-        Item item = new Item();
-
-        List<Author> authorList = new ArrayList<>();
-        Author author = new Author();
-        Publication publication = new Publication();
-        Publisher publisher = new Publisher();
-        Book book = new Book();
-        Books books = new Books();
-        List<Book> bookList = new ArrayList<>();
-
         total.setKeyword(search);
         DbpiaItemTypes = dbpiaController.getDbpia(search);
 
 
         for(ItemType itemType : DbpiaItemTypes){
             Authors authors = new Authors();
+            List<Author> authorList = new ArrayList<>();
             HashSet<String> set = new HashSet<>();
+
+
+            Item item = new Item();
+            Author author = new Author();
+            Publication publication = new Publication();
+            Publisher publisher = new Publisher();
+            Book book = new Book();
+            Books books = new Books();
+            List<Book> bookList = new ArrayList<>();
+
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
             StringTokenizer st = new StringTokenizer(edit," ");
@@ -75,11 +76,7 @@ public class HomeController extends Thread {
             }
 
             for(AuthorType authorType : itemType.getAuthors().getAuthor()){
-                author.setName(authorType.getName());
-                author.setOrder(authorType.getOrder());
-                author.setUrl(authorType.getUrl());
-                authorList.add(author);
-                //authorList.add(new Author(authorType.getOrder(), authorType.getName(), authorType.getUrl()));
+                authorList.add(new Author(authorType.getOrder(), authorType.getName(), authorType.getUrl()));
                 System.out.println("authorList  : " + authorList);
             }
             authors.setAuthors(authorList);
@@ -119,22 +116,14 @@ public class HomeController extends Thread {
 //                    System.out.println();
                 }
             }
-            System.out.println("booklist : " + bookList.size());
-            books.setBooks(bookList);
-            System.out.println("books : " + books);
+            books.setBook(bookList);
             item.setBooks(books);
             itemList.add(item);
-            items.setItems(itemList);
-            System.out.println("itemList : " + itemList);
-
-
-            authorList.clear();
-            bookList.clear();
-            itemList.clear();
-            result.setItems(items);
-            total.setResult(result);
+            items.setItem(itemList);
             set.clear();
         }
+        result.setItems(items);
+        total.setResult(result);
         return new ResponseEntity<Total>(total, HttpStatus.OK);
     }
 }
