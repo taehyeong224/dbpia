@@ -5,6 +5,8 @@ import koreatech.cse.controller.naver.NaverController;
 import koreatech.cse.domain.dbpia.AuthorType;
 import koreatech.cse.domain.dbpia.ItemType;
 import koreatech.cse.domain.total.*;
+import kr.co.shineware.nlp.komoran.core.analyzer.Komoran;
+import kr.co.shineware.util.common.model.Pair;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,10 @@ import java.util.StringTokenizer;
 @Controller
 @RequestMapping("/")
 public class HomeController extends Thread {
+
+    @Value("${datapath}")
+    private String datapath;
+
     StringSimilarity stringSimilarity = new StringSimilarity();
     DbpiaController dbpiaController = new DbpiaController();
     NaverController naverController = new NaverController();
@@ -43,6 +49,8 @@ public class HomeController extends Thread {
     public String search(){
         return "total";
     }
+
+
 
     @RequestMapping(value = "total/show" , method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public ResponseEntity<Total> total(String search) throws InterruptedException {
@@ -70,9 +78,14 @@ public class HomeController extends Thread {
 
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
-            StringTokenizer st = new StringTokenizer(edit," ");
-            while(st.hasMoreTokens()) {
-                set.add(st.nextToken());
+            System.out.println("datapath : " + datapath);
+            Komoran komoran = new Komoran(datapath);
+            List<List<Pair<String,String>>> result2 = komoran.analyze(edit);
+            for (List<Pair<String, String>> eojeolResult : result2) {
+                for (Pair<String, String> wordMorph : eojeolResult) {
+                    set.add(wordMorph.getFirst());
+                }
+                System.out.println();
             }
 
             for(AuthorType authorType : itemType.getAuthors().getAuthor()){
