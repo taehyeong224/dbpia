@@ -27,13 +27,14 @@ public class GoogleController {
 
     public String url = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=";
     public String url2 = "https://ajax.googleapis.com/ajax/services/search/web";
+
     @RequestMapping("/")
-    public String search(){
+    public String search() {
         return "google/index";
     }
 
     @RequestMapping("/getJson")
-    public String getSpringerResponse(Model model,String search) {
+    public String getSpringerResponse(Model model, String search) {
         RestTemplate restTemplate = new RestTemplate();
         List<HttpMessageConverter<?>> msgConverters = new ArrayList<>();
         msgConverters.add(new MappingAnyJsonHttpMessageConverter());
@@ -49,8 +50,8 @@ public class GoogleController {
                     restTemplate.getForEntity(builder.build().encode().toUri(),
                             Google.class);
             google = googleResponseEntity.getBody();
-            model.addAttribute("google" , google.getResponseData().getResults());
-            for(Result result : google.getResponseData().getResults()){
+            model.addAttribute("google", google.getResponseData().getResults());
+            for (Result result : google.getResponseData().getResults()) {
                 System.out.println("getTitle :" + result.getTitle());
                 System.out.println("getCacheUrl : " + result.getCacheUrl());
                 System.out.println("getContent : " + result.getContent());
@@ -61,7 +62,7 @@ public class GoogleController {
                 System.out.println("getVisibleUrl : " + result.getVisibleUrl());
                 System.out.println();
             }
-        }catch (HttpClientErrorException e) {
+        } catch (HttpClientErrorException e) {
             System.out.println("오류다 : " + e.getStatusCode() + ": " + e.getStatusText());
         }
         return "google/getJson";
@@ -88,8 +89,8 @@ public class GoogleController {
                             Google.class);
             google = googleResponseEntity.getBody();
 
-           return google;
-        }catch (HttpClientErrorException e) {
+            return google;
+        } catch (HttpClientErrorException e) {
             System.out.println("오류다 : " + e.getStatusCode() + ": " + e.getStatusText());
         }
         return google;
