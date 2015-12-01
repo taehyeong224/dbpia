@@ -37,7 +37,7 @@ public class HomeController extends Thread {
     @RequestMapping("/")
     public String home()
     {
-        return "hello";
+        return "index";
     }
 
 
