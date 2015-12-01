@@ -6,7 +6,7 @@
     <title>DBPIA 와 GOOGLE API를 활용한 RESTfull 제공 사이트</title>
 </head>
 <body>
-DBPIA 와 GOOGLE API를 활용한 RESTfull 제공 사이트입니다.<br/>
+DBPIA 와 NAVER OPEN API를 활용한 RESTfull 제공 사이트입니다.<br/>
 <c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 
 
@@ -21,7 +21,7 @@ DBPIA 와 GOOGLE API를 활용한 RESTfull 제공 사이트입니다.<br/>
     <br/>
 
     <c:url var="logoutUrl" value="/j_spring_security_logout"/>
-    <input type="button" value="total" onclick="location.href='/total/'"/><br/>
+    <input type="button" value="api 사용법" onclick="location.href='/total/'"/><br/>
     <form action="${logoutUrl}" method="post">
         <input type="submit" value="로그 아웃" />
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

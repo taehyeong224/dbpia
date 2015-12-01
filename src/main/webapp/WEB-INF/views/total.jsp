@@ -11,13 +11,8 @@
     <title></title>
 </head>
 <body>
-검색어를 입력하세요
-<form action="show" name="total">
-  검색어 : <input type="text" name="search">
-  <input type="submit">
-</form>
-<c:forEach var="m" items="${naver}">
-  ${m}<br/><br/>
-</c:forEach>
+url : http://localhost:8080/total/show/<br/>
+json 형식은 : http://localhost:8080/total/show/json?search=yourSearchWord<br/>
+xml 형식은 : http://localhost:8080/total/show/xml?search=yourSearchWord<br/>
 </body>
 </html>
