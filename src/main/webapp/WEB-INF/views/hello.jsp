@@ -21,9 +21,6 @@ DBPIA 와 GOOGLE API를 활용한 RESTfull 제공 사이트입니다.<br/>
     <br/>
 
     <c:url var="logoutUrl" value="/j_spring_security_logout"/>
-
-    <input type="button" value="dbpia" onclick="location.href='/dbpia/'"/><br/>
-    <input type="button" value="google" onclick="location.href='/google/'"/><br/>
     <input type="button" value="total" onclick="location.href='/total/'"/><br/>
     <form action="${logoutUrl}" method="post">
         <input type="submit" value="로그 아웃" />
