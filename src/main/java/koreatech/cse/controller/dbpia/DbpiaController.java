@@ -99,7 +99,7 @@ public class DbpiaController {
                     .queryParam("searchall", search)
                     .queryParam("category", "4");
 
-            System.out.println("dbpia : " + builder.build().encode().toUri());
+            //System.out.println("dbpia : " + builder.build().encode().toUri());
 
             RootType dbpiaType = restTemplate.getForObject(builder.build().encode().toUri(),
                     RootType.class);
