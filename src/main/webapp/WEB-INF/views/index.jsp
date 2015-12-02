@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
-    <title>Kelvin - Bootstrap 3 Resume Theme</title>
+    <title>DBPIA & NAVER API RESTFULL</title>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -205,9 +205,9 @@
                         <th>설명</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td>search</td>
+                        <td>검색어</td>
+                        <td>검색할 내용(사람 이름, 분야 등)</td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -221,11 +221,6 @@
                     </tr>
                 </table>
             </div>
-        </div>
-        <div class="col-lg-3">
-            <p>
-                <sm>AUGUST 2012 - CURRENT</sm>
-            </p>
         </div>
 
         <div class="col-lg-6 col-lg-offset-3">
@@ -325,81 +320,8 @@
                 </script>
             </div>
             <div class="col-lg-3 centered">
-                <canvas id="bootstrap" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>Bootstrap</p>
-                <br>
-                <script>
-                    var doughnutData = [
-                        {
-                            value: 90,
-                            color: "#1abc9c"
-                        },
-                        {
-                            value: 10,
-                            color: "#ecf0f1"
-                        }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("bootstrap").getContext("2d")).Doughnut(doughnutData);
-                </script>
-            </div>
-            <div class="col-lg-3 centered">
-                <canvas id="wordpress" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>Wordpress</p>
-                <br>
-                <script>
-                    var doughnutData = [
-                        {
-                            value: 65,
-                            color: "#1abc9c"
-                        },
-                        {
-                            value: 35,
-                            color: "#ecf0f1"
-                        }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("wordpress").getContext("2d")).Doughnut(doughnutData);
-                </script>
-            </div>
-
-            <div class="col-lg-3 col-lg-offset-3 centered">
-                <canvas id="html" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>HTML/CSS</p>
-                <br>
-                <script>
-                    var doughnutData = [
-                        {
-                            value: 80,
-                            color: "#1abc9c"
-                        },
-                        {
-                            value: 20,
-                            color: "#ecf0f1"
-                        }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("html").getContext("2d")).Doughnut(doughnutData);
-                </script>
-            </div>
-            <div class="col-lg-3 centered">
-                <canvas id="photoshop" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>Photoshop</p>
-                <br>
-                <script>
-                    var doughnutData = [
-                        {
-                            value: 70,
-                            color: "#1abc9c"
-                        },
-                        {
-                            value: 30,
-                            color: "#ecf0f1"
-                        }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("photoshop").getContext("2d")).Doughnut(doughnutData);
-                </script>
-            </div>
-            <div class="col-lg-3 centered">
                 <canvas id="illustrator" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>Illustrator</p>
+                <p>restFULL</p>
                 <br>
                 <script>
                     var doughnutData = [
@@ -427,61 +349,6 @@
 
 <section id="work" name="work"></section>
 <!--PORTFOLIO DESCRIPTION -->
-<div class="container desc">
-    <div class="row">
-        <div class="col-lg-2 col-lg-offset-1">
-            <h5>PORTFOLIO</h5>
-        </div>
-        <div class="col-lg-6">
-            <p><img class="img-responsive" src="./resources/assets/img/port01.jpg" alt=""></p>
-        </div>
-        <div class="col-lg-3">
-            <p>CANALS OF ENGLAND</p>
-
-            <p>
-                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.<br><br>
-                    <sm><i class="icon-tag"></i> design</sm>
-                </more>
-            </p>
-        </div>
-
-        <div class="col-lg-6 col-lg-offset-3">
-            <p><img class="img-responsive" src="./resources/assets/img/port02.jpg" alt=""></p>
-        </div>
-        <div class="col-lg-3">
-            <p>SANKEY</p>
-
-            <p>
-                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.<br><br>
-                    <sm><i class="icon-tag"></i> front-end</sm>
-                </more>
-            </p>
-        </div>
-
-        <div class="col-lg-6 col-lg-offset-3">
-            <p><img class="img-responsive" src="./resources/assets/img/port03.jpg" alt=""></p>
-        </div>
-        <div class="col-lg-3">
-            <p>WE GROW</p>
-
-            <p>
-                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.<br><br>
-                    <sm><i class="icon-tag"></i> web design</sm>
-                </more>
-            </p>
-        </div>
-
-    </div>
-    <!--/.row -->
-    <br>
-    <br>
-</div>
 <!--/.container -->
 
 
@@ -535,7 +402,7 @@
 
 <div id="c">
     <div class="container">
-        <p>Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a></p>
+        <p>Created by <a href="http://www.blacktie.co">LINK</a></p>
 
     </div>
 </div>
