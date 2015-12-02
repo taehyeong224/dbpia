@@ -143,6 +143,7 @@
 <section id="resume" name="resume"></section>
 <!--EDUCATION DESCRIPTION -->
 <div class="container desc">
+    </br></br></br></br>
     <div class="row">
 
         <div class="col-lg-2 col-lg-offset-1">
@@ -189,20 +190,37 @@
     <div class="row">
 
         <div class="col-lg-2 col-lg-offset-1">
-            <h5>WORK</h5>
+            <h5>상세설명</h5>
         </div>
         <div class="col-lg-6">
             <p>
-                <t>Front-end Developer</t>
+                <t>요청 변수(request parameter)</t>
                 <br>
-                Black Tie Corp. <br>
             </p>
-            <p>
-                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.
-                </more>
-            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>요청변수</th>
+                        <th>값</th>
+                        <th>설명</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="col-lg-3">
             <p>
