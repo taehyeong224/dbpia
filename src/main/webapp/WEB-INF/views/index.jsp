@@ -206,13 +206,13 @@
                     </tr>
                     <tr>
                         <td>search</td>
-                        <td>검색어</td>
+                        <td>string</td>
                         <td>검색할 내용(사람 이름, 분야 등)</td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td>display</td>
+                        <td>int</td>
+                        <td>검색할 책 갯수</td>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -225,21 +225,132 @@
 
         <div class="col-lg-6 col-lg-offset-3">
             <p>
-                <t>Web Designer - Intern</t>
+                <t>출력 결과 필드</t>
                 <br>
-                Onassis Ltd. <br>
             </p>
             <p>
-                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.
+                <more> 아래 테이블은 결과 값에 대한 요약 정보입니다.
                 </more>
             </p>
-        </div>
-        <div class="col-lg-3">
+
+            <table class="table">
+                <tr>
+                <td>필드</td>
+                <td>값</td>
+                <td>설명</td>
+                </tr>
+                <tr>
+                    <td>ctype</td>
+                    <td>string</td>
+                    <td>
+                        콘텐츠 유형<br/>
+                        series=시리즈 | book=간행물 | db=데이터베이스<br/>
+                        article =논문 | chapter=챕터 | record=항목<br/>
+                        public=첫단추(논문)<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td>string</td>
+                    <td>
+                        제목<br/>
+                        콘텐츠 유형에 따라 시리즈제목, 간행물제목, 데이터베이스명, 논문제목, 챕터제목, 항목명 등이 됩니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>authors</td>
+                    <td>-</td>
+                    <td>
+                        저자명들<br/>
+                        여러명의 저자를 child element인 author로 구분합니다.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>author</td>
+                    <td>-</td>
+                    <td>
+                        하위요소<br/>
+                        order = 저자순서, url=식별된 저자의 url, name=저자명 <br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>publisher</td>
+                    <td>-</td>
+                    <td>
+                        하위요소<br/>
+                        url = 발행기관 url, name = 발행기관명
+                    </td>
+                </tr>
+                <tr>
+                    <td>publication</td>
+                    <td>-</td>
+                    <td>
+                        간행물명<br/>
+                        콘텐츠 유형이 논문, 챕터, 항목일 경우에만 표시됩니다.<br/>
+                        하위요소<br/>
+                        url = 간행물 url, name = 간행물명
+                    </td>
+                </tr>
+                <tr>
+                    <td>issue</td>
+                    <td>-</td>
+                    <td>
+                        권호<br/>
+                        하위요소. <br/>
+                        name = 권호명(콘텐츠 유형이 논문일 경우에만 표시됩니다.)<br/>
+                        num = 권(호) (콘텐츠 유형이 논문일 경우에만 표시됩니다.)<br/>
+                        yymm = 발행연월(전자저널 간행물의 경우에는 표시되지 않습니다.)<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>pages</td>
+                    <td>string</td>
+                    <td>
+                        페이지<br/>
+                        시작페이지~끝페이지(총페이지수)로 구성되어 있습니다.<br/>
+                        콘텐츠 유형이 논문일 경우에만 표시됩니다.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>preview</td>
+                    <td>string</td>
+                    <td>미리보기 링크</td>
+                </tr>
+                <tr>
+                    <td>link_url</td>
+                    <td>string</td>
+                    <td>상세정보 링크</td>
+                </tr>
+                <tr>
+                    <td>link_api</td>
+                    <td>string</td>
+                    <td>비즈니스 API 링크<br/>
+                        논문에만 표시됩니다.</td>
+                </tr>
+                <tr>
+                    <td>books</td>
+                    <td>-</td>
+                    <td>하위요소. <br/>
+                        아래 테이블을 참고하세요</td>
+                </tr>
+            </table>
             <p>
-                <sm>JUNE 2010 - JULY 2012</sm>
+                <t>books 세부 정보 필드</t>
+                <br>
             </p>
+            <table class="table">
+                <tr class="odd"><th>필드</th><th>	값</th><th>	설명</th></tr>
+                <tr class="odd"><td>title</td><td>	string	</td><td>검색 결과 문서의 제목을 나타냅니다. 제목에서 검색어와 일치하는 부분은 <b> 태그로 감싸져 있습니다.</td></tr>
+                <tr><td>link</td><td>	string	</td><td>검색 결과 문서의 하이퍼텍스트 link를 나타냅니다.</td></tr>
+                <tr class="odd"><td>image</td><td>	string	</td><td>썸네일 이미지의 URL입니다. 이미지가 있는 경우만 나타납니다.</td></tr>
+                <tr><td>author</td><td>	string	</td><td>저자정보입니다.</td></tr>
+                <tr class="odd"><td>price</td><td>	integer	</td><td>정가 정보입니다. 절판도서 등으로 가격이 없으면 나타나지 않습니다.</td></tr>
+                <tr><td>discount</td><td>	integer	</td><td>할인 가격정보입니다. 절판도서 등으로 가격이 없으면 나타나지 않습니다.</td></tr>
+                <tr class="odd"><td>publisher</td><td>	string	</td><td>출판사 정보입니다.</td></tr>
+                <tr><td>pubdate</td><td>	date	</td><td>출간일 정보입니다.</td></tr>
+                <tr class="odd"><td>isbn</td><td>	integer	</td><td>ISBN 넘버입니다.</td></tr>
+                <tr><td>description</td><td>	string	</td><td>검색 결과 문서의 내용을 요약한 패시지 정보입니다. 문서 전체의 내용은 link 를 따라가면 <br />읽을 수 있습니다. 패시지에서 검색어와 일치하는 부분은 <b> 태그로 감싸져 있습니다.</td></tr>
+            </table>
         </div>
     </div>
     <!--/.row -->

@@ -19,7 +19,7 @@ public class NaverController {
     public String naverKEY = "0490c1442fae0f9657ae2104e0bd3588";
 
     List<ItemType> itemTypes = null;
-    public List<ItemType> getNaver(String search) {
+    public List<ItemType> getNaver(String search,int display) {
 
        // System.out.println("search : " + search);
         RestTemplate restTemplate = new RestTemplate();
@@ -27,12 +27,9 @@ public class NaverController {
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(naverURL)
                     .queryParam("key", naverKEY)
                     .queryParam("query", search)
-                    .queryParam("display", 3)
+                    .queryParam("display", display)
                     .queryParam("target", "book")
                     .queryParam("d_catg",280);
-
-
-            //System.out.println("Naver API : " + builder.build().encode().toUri());
 
             RssType rssType = restTemplate.getForObject(builder.build().encode().toUri(),
                     RssType.class);
@@ -40,9 +37,6 @@ public class NaverController {
             if (rssType.getChannel() == null)
                 return null;
             itemTypes = rssType.getChannel().getItem();
-            //System.out.println("itemTypes : " + itemTypes);
-
-
             return itemTypes;
 
         }catch (HttpClientErrorException e) {

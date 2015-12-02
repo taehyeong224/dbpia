@@ -53,7 +53,12 @@ public class HomeController extends Thread {
 
 
     @RequestMapping(value = "total/show/json" , method = RequestMethod.GET, produces="application/json;charset=UTF-8")
-    public ResponseEntity<Total> total(String search) throws InterruptedException {
+    public ResponseEntity<Total> total(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display) throws InterruptedException {
+        if(display < 0)
+            display = 1;
+        if(display > 100)
+            display = 100;
+        System.out.println("display : " + display);
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
@@ -115,7 +120,7 @@ public class HomeController extends Thread {
             for(String str : set) {
                 if (str.length() > 2) {
                     System.out.println("검색어 : " + str);
-                    naverItemTypes = naverController.getNaver(str);
+                    naverItemTypes = naverController.getNaver(str,display);
                     //System.out.println("naverItemTypes : " + naverItemTypes);
                     if (naverItemTypes != null) {
                         for (koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes) {
@@ -141,7 +146,7 @@ public class HomeController extends Thread {
     }
 
     @RequestMapping(value = "total/show/xml" , method = RequestMethod.GET, produces="application/xml;charset=UTF-8")
-    public ResponseEntity<Total> totalXML(String search) throws InterruptedException {
+    public ResponseEntity<Total> totalXML(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false) int display) throws InterruptedException {
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
@@ -203,7 +208,7 @@ public class HomeController extends Thread {
             for(String str : set) {
                 if (str.length() > 2) {
                     System.out.println("검색어 : " + str);
-                    naverItemTypes = naverController.getNaver(str);
+                    naverItemTypes = naverController.getNaver(str,display);
                     //System.out.println("naverItemTypes : " + naverItemTypes);
                     if (naverItemTypes != null) {
                         for (koreatech.cse.domain.naver.ItemType itemType1 : naverItemTypes) {

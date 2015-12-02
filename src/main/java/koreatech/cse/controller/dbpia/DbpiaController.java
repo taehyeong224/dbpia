@@ -43,7 +43,7 @@ public class DbpiaController {
         try {
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(dbpia_url)
                     .queryParam("key", dbpia_key)
-                    .queryParam("target", "se")
+                    .queryParam("target", "se_adv")
                     .queryParam("searchall", search)
                     .queryParam("category", "4");
 
