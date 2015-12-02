@@ -50,8 +50,6 @@ public class HomeController extends Thread {
         return "total";
     }
 
-
-
     @RequestMapping(value = "total/show/json" , method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public ResponseEntity<Total> total(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display) throws InterruptedException {
         if(display < 0)
@@ -146,7 +144,13 @@ public class HomeController extends Thread {
     }
 
     @RequestMapping(value = "total/show/xml" , method = RequestMethod.GET, produces="application/xml;charset=UTF-8")
-    public ResponseEntity<Total> totalXML(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false) int display) throws InterruptedException {
+    public ResponseEntity<Total> totalXML(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display) throws InterruptedException {
+
+        if(display < 0)
+            display = 1;
+        if(display > 100)
+            display = 100;
+        System.out.println("display : " + display);
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
