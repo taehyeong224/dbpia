@@ -48,7 +48,7 @@
     <![endif]-->
 </head>
 <body data-spy="scroll" data-offset="0" data-target="#nav">
-
+<c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 <div id="section-topbar">
     <div id="topbar-inner">
         <div class="container">
@@ -63,14 +63,31 @@
                                 class="icon-briefcase"></i></a></li>
                         <li class="menu-item"><a class="smoothScroll" href="#contact" title="Contact"><i
                                 class="icon-envelope"></i></a></li>
+                        <li class="menu-item"><a href="/user/signin" title="Sign in"><i
+                                class="icon-signin"></i></a></li>
+                        <li class="menu-item"><a href="/user/signup" title="Sign up"><i
+                                class="icon-plus-sign"></i></a></li>
+                        <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                            <li class="menu-item"><a href="/user/signup" title="Sign up"> 안녕하세요 ${user.name}님</a></li>
+                            <c:url var="logoutUrl" value="/j_spring_security_logout"/>
+                            <li class="menu-item"><a href="/user/signup" title="Sign up">
+                                <form action="${logoutUrl}" method="post">
+                                    <input type="submit" value="로그 아웃" style="color: #222222"/>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </form>
+                            </a></li>
+                        </sec:authorize>
                     </ul>
                     <!--/ uL#nav -->
                 </div>
                 <!-- /.dropdown -->
 
+
                 <div class="clear"></div>
             </div>
             <!--/.row -->
+
+
         </div>
         <!--/.container -->
 
@@ -83,10 +100,10 @@
 <div id="headerwrap">
     <div class="container">
         <div class="row centered">
-            <div class="col-lg-12">
-                <h1>William T. Kelvin</h1>
+            <div class="col-lg-12" style=" background-color: rgba( 255, 255, 255, 0.5 );">
+                <h1 style="color: #222222;">Study Paper</h1>
 
-                <h3>Web Designer | kelvin@blacktie.co</h3>
+                <h3 style="color: #222222;">Team | Mr. Heo,  Kim,  Seo</h3>
             </div>
             <!--/.col-lg-12 -->
         </div>
@@ -103,17 +120,16 @@
         <div class="row">
 
             <div class="col-lg-2 col-lg-offset-1">
-                <h5>ABOUT</h5>
+                <h5>소개</h5>
             </div>
             <div class="col-lg-6">
-                <p>I'm web designer &amp; front-end developer with 7 years of professional experience. I'm interested in
-                    all kinds of visual communication, but my major focus is on designing web, mobile &amp; tablet
-                    interfaces. I also have skills in other fields like branding, icon design or web development.</p>
+                <p style="line-height: 25px">스터디 페이퍼는 논문에 대해 공부를 할 때 관련된 서적 정보를 제공 해 주는  논문 관련 서적 제공 서비스입니다.
+                    해당 검색어 (논문검색)와 관련 있는 논문들을 검색 후 검색한 논문들의 정보를 분석, 분석된 결과들을 바탕으로 논문과 관련 있는 책 정보들을 json 과 xml 형식으로 제공해줍니다.</p>
             </div>
             <div class="col-lg-3">
-                <p><a href="#"><i class="icon-file"></i></a>
-                    <sm>DOWNLOAD PDF</sm>
-                </p>
+                <%--<p><a href="#"><i class="icon-file"></i></a>--%>
+                    <%--<sm>DOWNLOAD PDF</sm>--%>
+                <%--</p>--%>
             </div>
 
         </div>
@@ -130,38 +146,34 @@
     <div class="row">
 
         <div class="col-lg-2 col-lg-offset-1">
-            <h5>EDUCATION</h5>
+            <h5>API 사용법</h5>
         </div>
         <div class="col-lg-6">
             <p>
-                <t>Master of Web Design</t>
+                <t>URL : end point</t>
                 <br>
-                St. Patrick University <br>
-                <i>3 Years Course</i>
+                http://localhost:8080/total/show/ <br>
             </p>
         </div>
         <div class="col-lg-3">
-            <p>
-                <sm>GRADUATING IN MAY 2014</sm>
-                <br>
-                <imp>
-                    <sm>IN PROGRESS</sm>
-                </imp>
-            </p>
+            <%--<p>--%>
+                <%--<sm>GRADUATING IN MAY 2014</sm>--%>
+                <%--<br>--%>
+                <%--<imp>--%>
+                    <%--<sm>IN PROGRESS</sm>--%>
+                <%--</imp>--%>
+            <%--</p>--%>
         </div>
 
         <div class="col-lg-6 col-lg-offset-3">
-            <p>
-                <t>Degree of Web Developer</t>
-                <br>
-                Hastings University <br>
-                <i>2 Years Course</i>
+                <t>출력 형태(JSON, XML)</t>
+                </br></br>
+                JSON : http://localhost:8080/total/show/json?search="yourSearchWord" </br></br>
+                XML  : http://localhost:8080/total/show/xml?search="yourSearchWord" </br></br>
             </p>
         </div>
         <div class="col-lg-3">
-            <p>
-                <sm>JUNE 2012</sm>
-            </p>
+
         </div>
 
     </div>
