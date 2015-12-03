@@ -703,7 +703,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="./resources/assets/js/bootstrap.js"></script>
 <script>
-    var flag  = false;
+    var flag  = true;
         $("#closingMent").click(function () {
             if(flag == false){
                 $("#closingMent").text("시간날때");
