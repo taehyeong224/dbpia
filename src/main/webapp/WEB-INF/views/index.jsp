@@ -110,11 +110,11 @@
         <!--/.row -->
     </div>
     <!--/.container -->
+    <section id="about" name="about"></section>
 </div>
 <!--/.#headerwrap -->
 
 
-<section id="about" name="about"></section>
 <div id="intro">
     <div class="container">
         <div class="row">
@@ -180,9 +180,11 @@
         </div>
 
     </div>
+    <section id="work" name="work"></section>
     <!--/.row -->
     <br>
     <hr>
+
 </div>
 <!--/.container -->
 
@@ -403,6 +405,7 @@
         </div>
     </div>
     <!--/.row -->
+    <section id="contact" name="contact"></section>
     <br>
     <hr>
 </div>
@@ -660,12 +663,12 @@
 <!--/ #skillswrap -->
 
 
-<section id="work" name="work"></section>
+
 <!--PORTFOLIO DESCRIPTION -->
 <!--/.container -->
 
 
-<section id="contact" name="contact"></section>
+
 <!--FOOTER DESCRIPTION -->
 <div id="footwrap">
     <div class="container">
@@ -715,7 +718,7 @@
 
 <div id="c">
     <div class="container">
-        <p>Created by <a href="http://www.blacktie.co">LINK</a></p>
+        <p>Created by <a href="http://link.kut.ac.kr/">LINK</a></p>
 
     </div>
 </div>
