@@ -47,7 +47,7 @@
     <script src="../resources/assets/js/respond.min.js"></script>
     <![endif]-->
 </head>
-<body data-spy="scroll" data-offset="0" data-target="#nav">
+<br data-spy="scroll" data-offset="0" data-target="#nav">
 <c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 <div id="section-topbar">
     <div id="topbar-inner">
@@ -605,6 +605,7 @@
     <br>
 </div>
 <!--/.container -->
+</br></br></br></br></br>
 
 <!--SKILLS DESCRIPTION -->
 <%--<div id="skillswrap">--%>
