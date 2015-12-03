@@ -415,7 +415,7 @@
         <div class="col-lg-2 col-lg-offset-1">
             <h5>example</h5>
         </div>
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="col-lg-9">
             <ul>
                 <li>샘플 페이지 - JSON
                 </li>
