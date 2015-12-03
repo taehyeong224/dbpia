@@ -13,6 +13,28 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private int age;
+    private String key;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", key='" + key + '\'' +
+                ", authorities=" + authorities +
+                '}';
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     private List<Authority> authorities;
 
@@ -94,15 +116,4 @@ public class User implements UserDetails {
         }
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", authorities=" + authorities +
-                '}';
-    }
 }

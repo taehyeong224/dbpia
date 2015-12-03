@@ -21,6 +21,9 @@ public interface UserMapper {
     @Update("UPDATE USERS SET NAME = #{name}, EMAIL = #{email}, PASSWORD = #{password}, AGE = #{age} WHERE ID = #{id}")
     void update(User user);
 
+    @Select("SELECT * FROM USERS WHERE `key` = #{key}")
+    User getKey(@Param("key") String key);
+
     @Select("SELECT * FROM USERS WHERE ID = #{id}")
     User findOne(@Param("id") int id);
 

@@ -2,11 +2,14 @@ package koreatech.cse.controller;
 
 import koreatech.cse.controller.dbpia.DbpiaController;
 import koreatech.cse.controller.naver.NaverController;
+import koreatech.cse.domain.User;
 import koreatech.cse.domain.dbpia.AuthorType;
 import koreatech.cse.domain.dbpia.ItemType;
 import koreatech.cse.domain.total.*;
+import koreatech.cse.service.UserService;
 import kr.co.shineware.nlp.komoran.core.analyzer.Komoran;
 import kr.co.shineware.util.common.model.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +28,9 @@ import java.util.StringTokenizer;
 @Controller
 @RequestMapping("/")
 public class HomeController extends Thread {
+    
+    @Inject
+    private UserService userService;
 
     @Value("${datapath}")
     private String datapath;
@@ -40,7 +49,10 @@ public class HomeController extends Thread {
         return "index";
     }
 
-
+    @RequestMapping("/error")
+    public String error(){
+        return "/error";
+    }
 
     @Value("${env.text}")
     private String env;
@@ -51,7 +63,16 @@ public class HomeController extends Thread {
     }
 
     @RequestMapping(value = "total/show/json" , method = RequestMethod.GET, produces="application/json;charset=UTF-8")
-    public ResponseEntity<Total> total(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display) throws InterruptedException {
+    public ResponseEntity<Total> total(@RequestParam(value = "key",required = true) String key,@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display, HttpServletResponse response) throws InterruptedException, IOException {
+        User user = userService.getKey(key);
+        System.out.println("user : " + user);
+        if (user == null){
+            response.sendRedirect("http://localhost:8080/error");
+            return null;
+        }
+        System.out.println("key : " + key);
+        System.out.println("display : " +  display);
+
         if(display < 0)
             display = 1;
         if(display > 100)
@@ -144,8 +165,13 @@ public class HomeController extends Thread {
     }
 
     @RequestMapping(value = "total/show/xml" , method = RequestMethod.GET, produces="application/xml;charset=UTF-8")
-    public ResponseEntity<Total> totalXML(@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display) throws InterruptedException {
-
+    public ResponseEntity<Total> totalXML(@RequestParam(value = "key",required = true) String key,@RequestParam(value = "search", required = true) String search,@RequestParam(value = "display", required = false, defaultValue = "3") int display,HttpServletResponse response) throws InterruptedException, IOException {
+        User user = userService.getKey(key);
+        System.out.println("user : " + user);
+        if (user == null){
+            response.sendRedirect("http://localhost:8080/error");
+            return null;
+        }
         if(display < 0)
             display = 1;
         if(display > 100)

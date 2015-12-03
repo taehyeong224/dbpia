@@ -4,6 +4,7 @@ import koreatech.cse.domain.Searchable;
 import koreatech.cse.domain.User;
 import koreatech.cse.repository.AuthorityMapper;
 import koreatech.cse.repository.UserMapper;
+import koreatech.cse.service.RandomString;
 import koreatech.cse.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -35,18 +36,9 @@ public class UserController {
     @RequestMapping(value="/signup", method= RequestMethod.POST)
     @ResponseBody
     public String signup(@ModelAttribute User user) {
-        Random rnd =new Random();
-        StringBuffer buf =new StringBuffer();
-
-        for(int i=0;i<20;i++){
-            if(rnd.nextBoolean()){
-                buf.append((char)((int)(rnd.nextInt(26))+97));
-            }else{
-                buf.append((rnd.nextInt(10)));
-            }
-        }
+        RandomString randomString = new RandomString();
         userService.signup(user);
-        userService.updateKey(buf.toString(),user.getId());
+        userService.updateKey(randomString.getRandom(),user.getId());
         return "success";
     }
 

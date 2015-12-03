@@ -169,8 +169,9 @@
         <div class="col-lg-6 col-lg-offset-3">
                 <t>출력 형태(JSON, XML)</t>
                 </br></br>
-                JSON : http://localhost:8080/total/show/json?search="yourSearchWord" </br></br>
-                XML  : http://localhost:8080/total/show/xml?search="yourSearchWord" </br></br>
+                JSON : http://localhost:8080/total/show/json?key="yourkey"&search="yourSearchWord" </br></br>
+                XML  : http://localhost:8080/total/show/xml?key="yourkey"&search="yourSearchWord" </br></br>
+                발급 받은 키 : ${user.key}<br/><br/>
             </p>
         </div>
         <div class="col-lg-3">
@@ -215,9 +216,9 @@
                         <td>검색할 책 갯수</td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td>key</td>
+                        <td>String</td>
+                        <td>발급받은 키</td>
                     </tr>
                 </table>
             </div>

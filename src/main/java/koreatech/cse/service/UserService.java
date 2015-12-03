@@ -21,9 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class UserService implements UserDetailsService {
+    RandomString randomString = new RandomString();
     @Inject
     private UserMapper userMapper;
     @Inject
@@ -40,6 +42,10 @@ public class UserService implements UserDetailsService {
 
     public void updateKey(String key, int id){
         userMapper.updateKey(key,id);
+    }
+
+    public User getKey(String key){
+        return userMapper.getKey(key);
     }
 
     public Boolean signup(User user) {
@@ -85,6 +91,10 @@ public class UserService implements UserDetailsService {
             user.setAge(-1);
             user.setPassword("0000");
             signup(user);
+            updateKey(randomString.getRandom(),user.getId());
+        }
+        if(user.getKey().equals("test")){
+            updateKey(randomString.getRandom(),user.getId());
         }
 
         List<Authority> authorities = authorityMapper.findByUserId(user.getId());
@@ -108,6 +118,11 @@ public class UserService implements UserDetailsService {
             user.setAge(-2);
             user.setPassword("0000");
             signup(user);
+            updateKey(randomString.getRandom(),user.getId());
+        }
+
+        if(user.getKey().equals("test")){
+            updateKey(randomString.getRandom(),user.getId());
         }
 
         List<Authority> authorities = authorityMapper.findByUserId(user.getId());
