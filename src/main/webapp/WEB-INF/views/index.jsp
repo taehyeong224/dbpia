@@ -698,15 +698,7 @@
             </div>
             <div class="col-lg-3">
                 <p>
-                    <sm>SOCIAL LINKS</sm>
-                </p>
-                <p>
-                    <a href="#"><i class="icon-dribbble"></i></a>
-                    <a href="#"><i class="icon-twitter"></i></a>
-                    <a href="#"><i class="icon-facebook"></i></a>
-                    <a href="#"><i class="icon-linkedin"></i></a>
-                    <a href="#"><i class="icon-apple"></i></a>
-
+                    <a href="#"><i class="icon-github"></i></a><span>소스 보기</span>
                 </p>
             </div>
         </div>
@@ -718,7 +710,7 @@
 
 <div id="c">
     <div class="container">
-        <p>Created by <a href="http://link.kut.ac.kr/">LINK</a></p>
+        <p>Created by <a href="http://link.kut.ac.kr/">LINK Lab.</a></p>
 
     </div>
 </div>
