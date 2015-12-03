@@ -103,7 +103,7 @@
             <div class="col-lg-12" style=" background-color: rgba( 255, 255, 255, 0.5 );">
                 <h1 style="color: #222222;">Study Paper</h1>
 
-                <h3 style="color: #222222;">Team | Mr. Heo,  Kim,  Seo</h3>
+                <h3 style="color: #222222;">Team | Mr. Heo, Kim, Seo</h3>
             </div>
             <!--/.col-lg-12 -->
         </div>
@@ -123,12 +123,13 @@
                 <h5>소개</h5>
             </div>
             <div class="col-lg-6">
-                <p style="line-height: 25px">스터디 페이퍼는 논문에 대해 공부를 할 때 관련된 서적 정보를 제공 해 주는  논문 관련 서적 제공 서비스입니다.
-                    해당 검색어 (논문검색)와 관련 있는 논문들을 검색 후 검색한 논문들의 정보를 분석, 분석된 결과들을 바탕으로 논문과 관련 있는 책 정보들을 json 과 xml 형식으로 제공해줍니다.</p>
+                <p style="line-height: 25px">스터디 페이퍼는 논문에 대해 공부를 할 때 관련된 서적 정보를 제공 해 주는 논문 관련 서적 제공 서비스입니다.
+                    해당 검색어 (논문검색)와 관련 있는 논문들을 검색 후 검색한 논문들의 정보를 분석, 분석된 결과들을 바탕으로 논문과 관련 있는 책 정보들을 json 과 xml 형식으로
+                    제공해줍니다.</p>
             </div>
             <div class="col-lg-3">
                 <%--<p><a href="#"><i class="icon-file"></i></a>--%>
-                    <%--<sm>DOWNLOAD PDF</sm>--%>
+                <%--<sm>DOWNLOAD PDF</sm>--%>
                 <%--</p>--%>
             </div>
 
@@ -158,20 +159,20 @@
         </div>
         <div class="col-lg-3">
             <%--<p>--%>
-                <%--<sm>GRADUATING IN MAY 2014</sm>--%>
-                <%--<br>--%>
-                <%--<imp>--%>
-                    <%--<sm>IN PROGRESS</sm>--%>
-                <%--</imp>--%>
+            <%--<sm>GRADUATING IN MAY 2014</sm>--%>
+            <%--<br>--%>
+            <%--<imp>--%>
+            <%--<sm>IN PROGRESS</sm>--%>
+            <%--</imp>--%>
             <%--</p>--%>
         </div>
 
         <div class="col-lg-6 col-lg-offset-3">
-                <t>출력 형태(JSON, XML)</t>
-                </br></br>
-                JSON : http://localhost:8080/total/show/json?key="yourkey"&search="yourSearchWord" </br></br>
-                XML  : http://localhost:8080/total/show/xml?key="yourkey"&search="yourSearchWord" </br></br>
-                발급 받은 키 : ${user.key}<br/><br/>
+            <t>출력 형태(JSON, XML)</t>
+            </br></br>
+            JSON : http://localhost:8080/total/show/json?key="yourkey"&search="yourSearchWord" </br></br>
+            XML : http://localhost:8080/total/show/xml?key="yourkey"&search="yourSearchWord" </br></br>
+            발급 받은 키 : ${user.key}<br/><br/>
             </p>
         </div>
         <div class="col-lg-3">
@@ -236,9 +237,9 @@
 
             <table class="table">
                 <tr>
-                <td>필드</td>
-                <td>값</td>
-                <td>설명</td>
+                    <td>필드</td>
+                    <td>값</td>
+                    <td>설명</td>
                 </tr>
                 <tr>
                     <td>ctype</td>
@@ -326,13 +327,15 @@
                     <td>link_api</td>
                     <td>string</td>
                     <td>비즈니스 API 링크<br/>
-                        논문에만 표시됩니다.</td>
+                        논문에만 표시됩니다.
+                    </td>
                 </tr>
                 <tr>
                     <td>books</td>
                     <td>-</td>
                     <td>하위요소. <br/>
-                        아래 테이블을 참고하세요</td>
+                        아래 테이블을 참고하세요
+                    </td>
                 </tr>
             </table>
             <p>
@@ -340,17 +343,62 @@
                 <br>
             </p>
             <table class="table">
-                <tr class="odd"><th>필드</th><th>	값</th><th>	설명</th></tr>
-                <tr class="odd"><td>title</td><td>	string	</td><td>검색 결과 문서의 제목을 나타냅니다. 제목에서 검색어와 일치하는 부분은 <b> 태그로 감싸져 있습니다.</td></tr>
-                <tr><td>link</td><td>	string	</td><td>검색 결과 문서의 하이퍼텍스트 link를 나타냅니다.</td></tr>
-                <tr class="odd"><td>image</td><td>	string	</td><td>썸네일 이미지의 URL입니다. 이미지가 있는 경우만 나타납니다.</td></tr>
-                <tr><td>author</td><td>	string	</td><td>저자정보입니다.</td></tr>
-                <tr class="odd"><td>price</td><td>	integer	</td><td>정가 정보입니다. 절판도서 등으로 가격이 없으면 나타나지 않습니다.</td></tr>
-                <tr><td>discount</td><td>	integer	</td><td>할인 가격정보입니다. 절판도서 등으로 가격이 없으면 나타나지 않습니다.</td></tr>
-                <tr class="odd"><td>publisher</td><td>	string	</td><td>출판사 정보입니다.</td></tr>
-                <tr><td>pubdate</td><td>	date	</td><td>출간일 정보입니다.</td></tr>
-                <tr class="odd"><td>isbn</td><td>	integer	</td><td>ISBN 넘버입니다.</td></tr>
-                <tr><td>description</td><td>	string	</td><td>검색 결과 문서의 내용을 요약한 패시지 정보입니다. 문서 전체의 내용은 link 를 따라가면 <br />읽을 수 있습니다. 패시지에서 검색어와 일치하는 부분은 <b> 태그로 감싸져 있습니다.</td></tr>
+                <tr class="odd">
+                    <th>필드</th>
+                    <th> 값</th>
+                    <th> 설명</th>
+                </tr>
+                <tr class="odd">
+                    <td>title</td>
+                    <td> string</td>
+                    <td>검색 결과 문서의 제목을 나타냅니다. 제목에서 검색어와 일치하는 부분은 <b> 태그로 감싸져 있습니다.</b></td>
+                </tr>
+                <tr>
+                    <td>link</td>
+                    <td> string</td>
+                    <td>검색 결과 문서의 하이퍼텍스트 link를 나타냅니다.</td>
+                </tr>
+                <tr class="odd">
+                    <td>image</td>
+                    <td> string</td>
+                    <td>썸네일 이미지의 URL입니다. 이미지가 있는 경우만 나타납니다.</td>
+                </tr>
+                <tr>
+                    <td>author</td>
+                    <td> string</td>
+                    <td>저자정보입니다.</td>
+                </tr>
+                <tr class="odd">
+                    <td>price</td>
+                    <td> integer</td>
+                    <td>정가 정보입니다. 절판도서 등으로 가격이 없으면 나타나지 않습니다.</td>
+                </tr>
+                <tr>
+                    <td>discount</td>
+                    <td> integer</td>
+                    <td>할인 가격정보입니다. 절판도서 등으로 가격이 없으면 나타나지 않습니다.</td>
+                </tr>
+                <tr class="odd">
+                    <td>publisher</td>
+                    <td> string</td>
+                    <td>출판사 정보입니다.</td>
+                </tr>
+                <tr>
+                    <td>pubdate</td>
+                    <td> date</td>
+                    <td>출간일 정보입니다.</td>
+                </tr>
+                <tr class="odd">
+                    <td>isbn</td>
+                    <td> integer</td>
+                    <td>ISBN 넘버입니다.</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td> string</td>
+                    <td>검색 결과 문서의 내용을 요약한 패시지 정보입니다. 문서 전체의 내용은 link 를 따라가면 <br/>읽을 수 있습니다. 패시지에서 검색어와 일치하는 부분은 <b> 태그로
+                        감싸져 있습니다.</b></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -368,9 +416,12 @@
             <h5>example</h5>
         </div>
         <div class="col-lg-8 col-lg-offset-1">
-            <ul><li>샘플 페이지 - JSON
-            </li></ul><div class="prettify">
-<pre>{
+            <ul>
+                <li>샘플 페이지 - JSON
+                </li>
+            </ul>
+            <div class="prettify">
+                <pre>{
   &quot;keyword&quot;: &quot;\ud55c\uc5f0\ud76c&quot;,
   &quot;result&quot;: {
     &quot;items&quot;: {
@@ -421,10 +472,12 @@
         ....
 }
 </pre>
-        </div>
+            </div>
 
-            <ul><li>샘플 페이지 - XML
-            </li></ul>
+            <ul>
+                <li>샘플 페이지 - XML
+                </li>
+            </ul>
             <div class="prettify">
                 <pre>
             &lt;Total xmlns=""&gt;
@@ -545,64 +598,64 @@
             &lt;/result&gt;
             &lt;/Total&gt;
 </pre>
-                </div>
+            </div>
+        </div>
     </div>
     <!--/.row -->
     <br>
 </div>
 <!--/.container -->
 
-
 <!--SKILLS DESCRIPTION -->
-<div id="skillswrap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-1">
-                <h5>SKILLS</h5>
-            </div>
-            <div class="col-lg-3 centered">
-                <canvas id="javascript" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>Javascript</p>
-                <br>
-                <script>
-                    var doughnutData = [
-                        {
-                            value: 70,
-                            color: "#1abc9c"
-                        },
-                        {
-                            value: 30,
-                            color: "#ecf0f1"
-                        }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("javascript").getContext("2d")).Doughnut(doughnutData);
-                </script>
-            </div>
-            <div class="col-lg-3 centered">
-                <canvas id="illustrator" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
-                <p>restFULL</p>
-                <br>
-                <script>
-                    var doughnutData = [
-                        {
-                            value: 50,
-                            color: "#1abc9c"
-                        },
-                        {
-                            value: 50,
-                            color: "#ecf0f1"
-                        }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("illustrator").getContext("2d")).Doughnut(doughnutData);
-                </script>
-            </div>
+<%--<div id="skillswrap">--%>
+    <%--<div class="container">--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-lg-2 col-lg-offset-1">--%>
+                <%--<h5>SKILLS</h5>--%>
+            <%--</div>--%>
+            <%--<div class="col-lg-3 centered">--%>
+                <%--<canvas id="javascript" height="130" width="130" style="width: 130px; height: 130px;"></canvas>--%>
+                <%--<p>Javascript</p>--%>
+                <%--<br>--%>
+                <%--<script>--%>
+                    <%--var doughnutData = [--%>
+                        <%--{--%>
+                            <%--value: 70,--%>
+                            <%--color: "#1abc9c"--%>
+                        <%--},--%>
+                        <%--{--%>
+                            <%--value: 30,--%>
+                            <%--color: "#ecf0f1"--%>
+                        <%--}--%>
+                    <%--];--%>
+                    <%--var myDoughnut = new Chart(document.getElementById("javascript").getContext("2d")).Doughnut(doughnutData);--%>
+                <%--</script>--%>
+            <%--</div>--%>
+            <%--<div class="col-lg-3 centered">--%>
+                <%--<canvas id="illustrator" height="130" width="130" style="width: 130px; height: 130px;"></canvas>--%>
+                <%--<p>restFULL</p>--%>
+                <%--<br>--%>
+                <%--<script>--%>
+                    <%--var doughnutData = [--%>
+                        <%--{--%>
+                            <%--value: 50,--%>
+                            <%--color: "#1abc9c"--%>
+                        <%--},--%>
+                        <%--{--%>
+                            <%--value: 50,--%>
+                            <%--color: "#ecf0f1"--%>
+                        <%--}--%>
+                    <%--];--%>
+                    <%--var myDoughnut = new Chart(document.getElementById("illustrator").getContext("2d")).Doughnut(doughnutData);--%>
+                <%--</script>--%>
+            <%--</div>--%>
 
-        </div>
-        <!--/.row -->
-        <br>
-    </div>
-    <!--/.container -->
-</div>
+        <%--</div>--%>
+        <%--<!--/.row -->--%>
+        <%--<br>--%>
+    <%--</div>--%>
+    <%--<!--/.container -->--%>
+<%--</div>--%>
 <!--/ #skillswrap -->
 
 
