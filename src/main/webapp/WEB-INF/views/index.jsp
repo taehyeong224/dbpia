@@ -413,7 +413,7 @@
 <div class="container desc">
     <div class="row">
         <div class="col-lg-2 col-lg-offset-1">
-            <h5>example</h5>
+            <h5>예  시</h5>
         </div>
         <div class="col-lg-9">
             <ul>
