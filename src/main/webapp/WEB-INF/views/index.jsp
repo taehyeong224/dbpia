@@ -416,7 +416,7 @@
 <div class="container desc">
     <div class="row">
         <div class="col-lg-2 col-lg-offset-1">
-            <h5>예  시</h5>
+            <h5>예 시</h5>
         </div>
         <div class="col-lg-9">
             <ul>
@@ -612,61 +612,59 @@
 
 <!--SKILLS DESCRIPTION -->
 <%--<div id="skillswrap">--%>
-    <%--<div class="container">--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-lg-2 col-lg-offset-1">--%>
-                <%--<h5>SKILLS</h5>--%>
-            <%--</div>--%>
-            <%--<div class="col-lg-3 centered">--%>
-                <%--<canvas id="javascript" height="130" width="130" style="width: 130px; height: 130px;"></canvas>--%>
-                <%--<p>Javascript</p>--%>
-                <%--<br>--%>
-                <%--<script>--%>
-                    <%--var doughnutData = [--%>
-                        <%--{--%>
-                            <%--value: 70,--%>
-                            <%--color: "#1abc9c"--%>
-                        <%--},--%>
-                        <%--{--%>
-                            <%--value: 30,--%>
-                            <%--color: "#ecf0f1"--%>
-                        <%--}--%>
-                    <%--];--%>
-                    <%--var myDoughnut = new Chart(document.getElementById("javascript").getContext("2d")).Doughnut(doughnutData);--%>
-                <%--</script>--%>
-            <%--</div>--%>
-            <%--<div class="col-lg-3 centered">--%>
-                <%--<canvas id="illustrator" height="130" width="130" style="width: 130px; height: 130px;"></canvas>--%>
-                <%--<p>restFULL</p>--%>
-                <%--<br>--%>
-                <%--<script>--%>
-                    <%--var doughnutData = [--%>
-                        <%--{--%>
-                            <%--value: 50,--%>
-                            <%--color: "#1abc9c"--%>
-                        <%--},--%>
-                        <%--{--%>
-                            <%--value: 50,--%>
-                            <%--color: "#ecf0f1"--%>
-                        <%--}--%>
-                    <%--];--%>
-                    <%--var myDoughnut = new Chart(document.getElementById("illustrator").getContext("2d")).Doughnut(doughnutData);--%>
-                <%--</script>--%>
-            <%--</div>--%>
+<%--<div class="container">--%>
+<%--<div class="row">--%>
+<%--<div class="col-lg-2 col-lg-offset-1">--%>
+<%--<h5>SKILLS</h5>--%>
+<%--</div>--%>
+<%--<div class="col-lg-3 centered">--%>
+<%--<canvas id="javascript" height="130" width="130" style="width: 130px; height: 130px;"></canvas>--%>
+<%--<p>Javascript</p>--%>
+<%--<br>--%>
+<%--<script>--%>
+<%--var doughnutData = [--%>
+<%--{--%>
+<%--value: 70,--%>
+<%--color: "#1abc9c"--%>
+<%--},--%>
+<%--{--%>
+<%--value: 30,--%>
+<%--color: "#ecf0f1"--%>
+<%--}--%>
+<%--];--%>
+<%--var myDoughnut = new Chart(document.getElementById("javascript").getContext("2d")).Doughnut(doughnutData);--%>
+<%--</script>--%>
+<%--</div>--%>
+<%--<div class="col-lg-3 centered">--%>
+<%--<canvas id="illustrator" height="130" width="130" style="width: 130px; height: 130px;"></canvas>--%>
+<%--<p>restFULL</p>--%>
+<%--<br>--%>
+<%--<script>--%>
+<%--var doughnutData = [--%>
+<%--{--%>
+<%--value: 50,--%>
+<%--color: "#1abc9c"--%>
+<%--},--%>
+<%--{--%>
+<%--value: 50,--%>
+<%--color: "#ecf0f1"--%>
+<%--}--%>
+<%--];--%>
+<%--var myDoughnut = new Chart(document.getElementById("illustrator").getContext("2d")).Doughnut(doughnutData);--%>
+<%--</script>--%>
+<%--</div>--%>
 
-        <%--</div>--%>
-        <%--<!--/.row -->--%>
-        <%--<br>--%>
-    <%--</div>--%>
-    <%--<!--/.container -->--%>
+<%--</div>--%>
+<%--<!--/.row -->--%>
+<%--<br>--%>
+<%--</div>--%>
+<%--<!--/.container -->--%>
 <%--</div>--%>
 <!--/ #skillswrap -->
 
 
-
 <!--PORTFOLIO DESCRIPTION -->
 <!--/.container -->
-
 
 
 <!--FOOTER DESCRIPTION -->
@@ -675,30 +673,14 @@
         <div class="row">
 
             <div class="col-lg-2 col-lg-offset-1">
-                <h5>CONTACT</h5>
+                <h5 style="color: #ebebeb;">마치며...</h5>
             </div>
-            <div class="col-lg-6">
-                <p>
-                    <t>Email</t>
-                    <br>
-                    william@blacktie.co <br>
-                </p>
-                <p>
-                    <t>Adress</t>
-                    <br>
-                    Some Ave. 987 <br>
-                    Postal 23892 <br>
-                    London, England. <br>
-                </p>
-                <p>
-                    <t>Phone</t>
-                    <br>
-                    +55 8933-2383 <br>
-                </p>
+            <div class="col-lg-6 col-lg-offset-1">
+                <h4 id="closingMent" style="color: #ebebeb;">개발자가 언제 잔다고 생각하나?</h4>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <p>
-                    <a href="#"><i class="icon-github"></i></a><span>소스 보기</span>
+                    <a href="https://github.com/taehyoung/dbpia.git"><i class="icon-github"></i></a><span>소스 보기</span>
                 </p>
             </div>
         </div>
@@ -720,5 +702,19 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="./resources/assets/js/bootstrap.js"></script>
+<script>
+    var flag  = false;
+        $("#closingMent").click(function () {
+            if(flag == false){
+                $("#closingMent").text("시간날때");
+                flag = true;
+            }else{
+                $("#closingMent").text("개발자가 언제 잔다고 생각하나?");
+                flag = false;
+            }
+
+        });
+
+</script>
 </body>
 </html>
