@@ -167,15 +167,15 @@
             <%--</p>--%>
         </div>
 
-        <div class="col-lg-6 col-lg-offset-3">
+        <div class="col-lg-8 col-lg-offset-3">
             <t>출력 형태(JSON, XML)</t>
             </br></br>
             JSON : http://localhost:8080/total/show/json?key="yourkey"&search="yourSearchWord" </br></br>
             XML : http://localhost:8080/total/show/xml?key="yourkey"&search="yourSearchWord" </br></br>
             발급 받은 키 : ${user.key}<br/><br/>
-            </p>
+
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-1">
 
         </div>
 
