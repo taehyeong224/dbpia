@@ -15,6 +15,9 @@ public interface UserMapper {
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "id", before = false, resultType = int.class)
     void insert(User user);
 
+    @Update("UPDATE USERS SET `KEY` = #{key} WHERE ID = #{id}")
+    void updateKey(@Param("key") String key, @Param("id") int id);
+
     @Update("UPDATE USERS SET NAME = #{name}, EMAIL = #{email}, PASSWORD = #{password}, AGE = #{age} WHERE ID = #{id}")
     void update(User user);
 

@@ -38,6 +38,10 @@ public class UserService implements UserDetailsService {
         return authorityMapper.count();
     }
 
+    public void updateKey(String key, int id){
+        userMapper.updateKey(key,id);
+    }
+
     public Boolean signup(User user) {
         if(user.getEmail() == null || user.getPassword() ==  null)
             return false;
