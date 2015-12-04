@@ -67,7 +67,7 @@ public class HomeController extends Thread {
         User user = userService.getKey(key);
         System.out.println("user : " + user);
         if (user == null){
-            response.sendRedirect("http://localhost:8080/error");
+            response.sendRedirect("http://54.249.43.49:8080/error");
             return null;
         }
         System.out.println("key : " + key);
@@ -169,7 +169,7 @@ public class HomeController extends Thread {
         User user = userService.getKey(key);
         System.out.println("user : " + user);
         if (user == null){
-            response.sendRedirect("http://localhost:8080/error");
+            response.sendRedirect("http://54.249.43.49:8080/error");
             return null;
         }
         if(display < 0)
