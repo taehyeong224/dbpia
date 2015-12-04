@@ -81,15 +81,15 @@ public class HomeController extends Thread {
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
-        List<Item> itemList  = new ArrayList<>();
+        List<Item> itemList  = new ArrayList();
         total.setKeyword(search);
         DbpiaItemTypes = dbpiaController.getDbpia(search);
 
 
         for(ItemType itemType : DbpiaItemTypes){
             Authors authors = new Authors();
-            List<Author> authorList = new ArrayList<>();
-            HashSet<String> set = new HashSet<>();
+            List<Author> authorList = new ArrayList();
+            HashSet<String> set = new HashSet();
 
 
             Item item = new Item();
@@ -98,7 +98,7 @@ public class HomeController extends Thread {
             Publisher publisher = new Publisher();
             Book book = new Book();
             Books books = new Books();
-            List<Book> bookList = new ArrayList<>();
+            List<Book> bookList = new ArrayList();
 
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);
@@ -180,15 +180,15 @@ public class HomeController extends Thread {
         Total total = new Total();
         Result result = new Result();
         Items items = new Items();
-        List<Item> itemList  = new ArrayList<>();
+        List<Item> itemList  = new ArrayList();
         total.setKeyword(search);
         DbpiaItemTypes = dbpiaController.getDbpia(search);
 
 
         for(ItemType itemType : DbpiaItemTypes){
             Authors authors = new Authors();
-            List<Author> authorList = new ArrayList<>();
-            HashSet<String> set = new HashSet<>();
+            List<Author> authorList = new ArrayList();
+            HashSet<String> set = new HashSet();
 
 
             Item item = new Item();
@@ -197,7 +197,7 @@ public class HomeController extends Thread {
             Publisher publisher = new Publisher();
             Book book = new Book();
             Books books = new Books();
-            List<Book> bookList = new ArrayList<>();
+            List<Book> bookList = new ArrayList();
 
             String edit = itemType.getTitle().replaceAll("<[^>]*>", "");
             System.out.println("edit : " + edit);

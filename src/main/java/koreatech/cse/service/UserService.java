@@ -105,8 +105,8 @@ public class UserService implements UserDetailsService {
         securityContext.setAuthentication(authentication);
         HttpSession session = request.getSession(true);
         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-
-        return "redirect:/";
+        String redirectUrl = request.getScheme() + "://http://54.249.43.49:8080";
+        return "redirect:" + redirectUrl;
     }
 
     public String facebookLogin(HttpServletRequest request, FacebookProfile facebookProfile) throws Exception{
@@ -133,8 +133,8 @@ public class UserService implements UserDetailsService {
         securityContext.setAuthentication(authentication);
         HttpSession session = request.getSession(true);
         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-
-        return "redirect:/";
+        String redirectUrl = request.getScheme() + "://http://54.249.43.49:8080";
+        return "redirect:" + redirectUrl;
     }
 
 }
