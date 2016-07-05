@@ -1,50 +1,48 @@
 package koreatech.cse.repository;
 
-
+import java.util.List;
 import koreatech.cse.domain.Searchable;
 import koreatech.cse.domain.User;
 import koreatech.cse.repository.provider.UserSqlProvider;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface UserMapper {
-    @Insert("INSERT INTO wsc.users (NAME, EMAIL, PASSWORD, AGE) VALUES (#{name}, #{email}, #{password}, #{age})")
-    @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "id", before = false, resultType = int.class)
-    void insert(User user);
+    @Insert(value={"INSERT INTO USERS (NAME, EMAIL, PASSWORD, AGE) VALUES (#{name}, #{email}, #{password}, #{age})"})
+    @SelectKey(statement={"SELECT LAST_INSERT_ID()"}, keyProperty="id", before=false, resultType=int.class)
+    public void insert(User var1);
 
-    @Update("UPDATE wsc.users SET `KEY` = #{key} WHERE ID = #{id}")
-    void updateKey(@Param("key") String key, @Param("id") int id);
+    @Update(value={"UPDATE USERS SET `KEY` = #{key} WHERE ID = #{id}"})
+    public void updateKey(@Param(value="key") String var1, @Param(value="id") int var2);
 
-    @Update("UPDATE wsc.users SET NAME = #{name}, EMAIL = #{email}, PASSWORD = #{password}, AGE = #{age} WHERE ID = #{id}")
-    void update(User user);
+    @Update(value={"UPDATE USERS SET NAME = #{name}, EMAIL = #{email}, PASSWORD = #{password}, AGE = #{age} WHERE ID = #{id}"})
+    public void update(User var1);
 
-    @Select("SELECT * FROM wsc.users WHERE `key` = #{key}")
-    User getKey(@Param("key") String key);
+    @Select(value={"SELECT * FROM USERS WHERE `key` = #{key}"})
+    public User getKey(@Param(value="key") String var1);
 
-    @Select("SELECT * FROM wsc.users WHERE ID = #{id}")
-    User findOne(@Param("id") int id);
+    @Select(value={"SELECT * FROM USERS WHERE ID = #{id}"})
+    public User findOne(@Param(value="id") int var1);
 
-    @Select("SELECT * FROM wsc.users WHERE EMAIL = #{email}")
-    User findByEmail(@Param("email") String email);
+    @Select(value={"SELECT * FROM USERS WHERE EMAIL = #{email}"})
+    public User findByEmail(@Param(value="email") String var1);
 
-    @Delete("DELETE FROM wsc.users WHERE ID = #{id}")
-    void delete(@Param("id") int id);
+    @Delete(value={"DELETE FROM USERS WHERE ID = #{id}"})
+    public void delete(@Param(value="id") int var1);
 
-    @SelectProvider(type = UserSqlProvider.class, method = "findAllByProvider")
-    List<User> findByProvider(Searchable searchable);
+    @SelectProvider(type=UserSqlProvider.class, method="findAllByProvider")
+    public List<User> findByProvider(Searchable var1);
 
-    @Select("<script>"
-            + "SELECT * FROM wsc.users"
-            + "<if test='name != null'> WHERE NAME = #{name}</if>"
-            + "<if test='name != null and email != null'> OR EMAIL = #{email}</if>"
-            + "<if test='orderParam != null'>ORDER BY ${orderParam} DESC</if>"
-            + "</script>")
-    List<User> findByScript(Searchable searchable);
+    @Select(value={"<script>SELECT * FROM USERS<if test='name != null'> WHERE NAME = #{name}</if><if test='name != null and email != null'> OR EMAIL = #{email}</if><if test='orderParam != null'>ORDER BY ${orderParam} DESC</if></script>"})
+    public List<User> findByScript(Searchable var1);
 
-    @Select("SELECT count(*) FROM wsc.authorities")
-    int count();
-
+    @Select(value={"SELECT count(*) FROM AUTHORITIES"})
+    public int count();
 }

@@ -1,9 +1,10 @@
 package koreatech.cse.domain.total;
 
 import java.util.List;
+import koreatech.cse.domain.total.Author;
 
-/**
- * Created by kth on 2015. 11. 30..
+/*
+ * This class specifies class file version 49.0 but uses Java 6 signatures.  Assumed Java 6.
  */
 public class Authors {
     private List<Author> authors;
@@ -16,15 +17,12 @@ public class Authors {
         this.authors = null;
     }
 
-    @Override
     public String toString() {
-        return "Author{" +
-                "authors=" + authors +
-                '}';
+        return "Author{authors=" + this.authors + '}';
     }
 
     public List<Author> getAuthors() {
-        return authors;
+        return this.authors;
     }
 
     public void setAuthors(List<Author> authors) {

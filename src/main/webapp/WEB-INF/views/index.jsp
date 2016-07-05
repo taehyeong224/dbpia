@@ -29,22 +29,22 @@
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="../resources/assets/css/main.css" rel="stylesheet">
+    <link href="../wsc/resources/assets/css/main.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../resources/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../wsc/resources/assets/css/font-awesome.min.css">
 
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet"
           type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet" type="text/css">
 
-    <script src="../resources/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../resources/assets/js/smoothscroll.js"></script>
-    <script src="../resources/assets/js/Chart.js"></script>
+    <script src="../wsc/resources/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../wsc/resources/assets/js/smoothscroll.js"></script>
+    <script src="../wsc/resources/assets/js/Chart.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="../resources/assets/js/html5shiv.js"></script>
-    <script src="../resources/assets/js/respond.min.js"></script>
+    <script src="../wsc/resources/assets/js/html5shiv.js"></script>
+    <script src="../wsc/resources/assets/js/respond.min.js"></script>
     <![endif]-->
 </head>
 <br data-spy="scroll" data-offset="0" data-target="#nav">
@@ -63,14 +63,14 @@
                                 class="icon-briefcase"></i></a></li>
                         <li class="menu-item"><a class="smoothScroll" href="#contact" title="Contact"><i
                                 class="icon-envelope"></i></a></li>
-                        <li class="menu-item"><a href="/user/signin" title="Sign in"><i
+                        <li class="menu-item"><a href="/wsc/user/signin" title="Sign in"><i
                                 class="icon-signin"></i></a></li>
-                        <li class="menu-item"><a href="/user/signup" title="Sign up"><i
+                        <li class="menu-item"><a href="/wsc/user/signup" title="Sign up"><i
                                 class="icon-plus-sign"></i></a></li>
                         <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                            <li class="menu-item"><a href="/user/signup" title="Sign up"> 안녕하세요 ${user.name}님</a></li>
+                            <li class="menu-item"><a href="/wsc/user/signup" title="Sign up"> 안녕하세요 ${user.name}님</a></li>
                             <c:url var="logoutUrl" value="/j_spring_security_logout"/>
-                            <li class="menu-item"><a href="/user/signup" title="Sign up">
+                            <li class="menu-item"><a href="/wsc/user/signup" title="Sign up">
                                 <form action="${logoutUrl}" method="post">
                                     <input type="submit" value="로그 아웃" style="color: #222222"/>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -154,7 +154,7 @@
             <p>
                 <t>URL : end point</t>
                 <br>
-                http://localhost:8080/total/show/ <br>
+                http://kth409.synology.me/wsc/total/show/ <br>
             </p>
         </div>
         <div class="col-lg-3">
@@ -170,8 +170,8 @@
         <div class="col-lg-8 col-lg-offset-3">
             <t>출력 형태(JSON, XML)</t>
             </br></br>
-            JSON : http://localhost:8080/total/show/json?key="yourkey"&search="yourSearchWord" </br></br>
-            XML : http://localhost:8080/total/show/xml?key="yourkey"&search="yourSearchWord" </br></br>
+            JSON : http://kth409.synology.me/wsc/total/show/json?key="yourkey"&search="yourSearchWord" </br></br>
+            XML : http://kth409.synology.me/wsc/total/show/xml?key="yourkey"&search="yourSearchWord" </br></br>
             발급 받은 키 : ${user.key}<br/><br/>
 
         </div>

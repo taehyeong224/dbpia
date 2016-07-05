@@ -1,22 +1,15 @@
 package koreatech.cse.domain.total;
 
-/**
- * Created by kth on 2015. 11. 30..
- */
 public class Publisher {
     private String url;
     private String name;
 
-    @Override
     public String toString() {
-        return "Publisher{" +
-                "url='" + url + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "Publisher{url='" + this.url + '\'' + ", name='" + this.name + '\'' + '}';
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public Publisher(String url, String name) {
@@ -34,7 +27,7 @@ public class Publisher {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {

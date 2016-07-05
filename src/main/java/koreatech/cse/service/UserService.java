@@ -1,11 +1,19 @@
 package koreatech.cse.service;
 
+import java.io.PrintStream;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import koreatech.cse.domain.Authority;
 import koreatech.cse.domain.User;
 import koreatech.cse.domain.oauth2.daum.DaumProfileDetail;
 import koreatech.cse.domain.oauth2.facebook.FacebookProfile;
 import koreatech.cse.repository.AuthorityMapper;
 import koreatech.cse.repository.UserMapper;
+import koreatech.cse.service.RandomString;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -16,15 +24,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService
+        implements UserDetailsService {
     RandomString randomString = new RandomString();
     @Inject
     private UserMapper userMapper;
@@ -34,107 +37,97 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     public int countUsers() {
-        return userMapper.count();
+        return this.userMapper.count();
     }
+
     public int countAuthorities() {
-        return authorityMapper.count();
+        return this.authorityMapper.count();
     }
 
-    public void updateKey(String key, int id){
-        userMapper.updateKey(key,id);
+    public void updateKey(String key, int id) {
+        this.userMapper.updateKey(key, id);
     }
 
-    public User getKey(String key){
-        return userMapper.getKey(key);
+    public User getKey(String key) {
+        return this.userMapper.getKey(key);
     }
 
     public Boolean signup(User user) {
-        if(user.getEmail() == null || user.getPassword() ==  null)
+        if (user.getEmail() == null || user.getPassword() == null) {
             return false;
-
-        user.setPassword(passwordEncoder.encode(user.getPassword()));	// 사용자의 실제 비밀번호를 sha-256로 암호화함
-        userMapper.insert(user);
-
+        }
+        user.setPassword(this.passwordEncoder.encode((CharSequence)user.getPassword()));
+        this.userMapper.insert(user);
         Authority authority = new Authority();
         authority.setUserId(user.getId());
         authority.setRole("ROLE_USER");
-        authorityMapper.insert(authority);
-
-        if(user.getEmail().contains("admin")) {
+        this.authorityMapper.insert(authority);
+        if (user.getEmail().contains("admin")) {
             Authority adminAuthority = new Authority();
             adminAuthority.setUserId(user.getId());
             adminAuthority.setRole("ROLE_ADMIN");
-            authorityMapper.insert(adminAuthority);
+            this.authorityMapper.insert(adminAuthority);
         }
-
         System.out.println("user created :" + new Date());
         return true;
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userMapper.findByEmail(username);
+        User user = this.userMapper.findByEmail(username);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username/password.");
         }
-        List<Authority> authorities = authorityMapper.findByUserId(user.getId());
+        List authorities = this.authorityMapper.findByUserId(user.getId());
         user.setAuthorities(authorities);
-        System.out.println("user = " + user);
+        System.out.println("user = " + (Object)user);
         return user;
     }
 
-    public String daumLogin(HttpServletRequest request, DaumProfileDetail daumProfileDetail) throws Exception{
-        User user = userMapper.findByEmail(daumProfileDetail.getUserid());
+    public String daumLogin(HttpServletRequest request, DaumProfileDetail daumProfileDetail) throws Exception {
+        User user = this.userMapper.findByEmail(daumProfileDetail.getUserid());
         if (user == null) {
             user = new User();
             user.setEmail(daumProfileDetail.getUserid());
             user.setName(daumProfileDetail.getNickname());
             user.setAge(-1);
             user.setPassword("0000");
-            signup(user);
-            updateKey(randomString.getRandom(),user.getId());
+            this.signup(user);
+            this.updateKey(this.randomString.getRandom(), user.getId());
         }
-        if(user.getKey().equals("test")){
-            updateKey(randomString.getRandom(),user.getId());
+        if (user.getKey().equals("test")) {
+            this.updateKey(this.randomString.getRandom(), user.getId());
         }
-
-        List<Authority> authorities = authorityMapper.findByUserId(user.getId());
+        List authorities = this.authorityMapper.findByUserId(user.getId());
         user.setAuthorities(authorities);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user, "0000", user.getAuthorities());
-
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken((Object)user, (Object)"0000", user.getAuthorities());
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
+        securityContext.setAuthentication((Authentication)authentication);
         HttpSession session = request.getSession(true);
-        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-
+        session.setAttribute("SPRING_SECURITY_CONTEXT", (Object)securityContext);
         return "redirect:/";
     }
 
-    public String facebookLogin(HttpServletRequest request, FacebookProfile facebookProfile) throws Exception{
-        User user = userMapper.findByEmail(facebookProfile.getId());
+    public String facebookLogin(HttpServletRequest request, FacebookProfile facebookProfile) throws Exception {
+        User user = this.userMapper.findByEmail(facebookProfile.getId());
         if (user == null) {
             user = new User();
             user.setEmail(facebookProfile.getId());
             user.setName(facebookProfile.getName());
             user.setAge(-2);
             user.setPassword("0000");
-            signup(user);
-            updateKey(randomString.getRandom(),user.getId());
+            this.signup(user);
+            this.updateKey(this.randomString.getRandom(), user.getId());
         }
-
-        if(user.getKey().equals("test")){
-            updateKey(randomString.getRandom(),user.getId());
+        if (user.getKey().equals("test")) {
+            this.updateKey(this.randomString.getRandom(), user.getId());
         }
-
-        List<Authority> authorities = authorityMapper.findByUserId(user.getId());
+        List authorities = this.authorityMapper.findByUserId(user.getId());
         user.setAuthorities(authorities);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user, "0000", user.getAuthorities());
-
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken((Object)user, (Object)"0000", user.getAuthorities());
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
+        securityContext.setAuthentication((Authentication)authentication);
         HttpSession session = request.getSession(true);
-        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-
+        session.setAttribute("SPRING_SECURITY_CONTEXT", (Object)securityContext);
         return "redirect:/";
     }
-
 }

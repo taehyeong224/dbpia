@@ -26,9 +26,9 @@ import java.util.HashMap;
 @Controller
 @RequestMapping("/oauth2")
 public class DaumOauth2Controller {
-    private static String daum_redirect_uri = "http://localhost:8080/oauth2/daum_callback";
+    private static String daum_redirect_uri = "http://kth409.synology.me/wsc/oauth2/daum_callback";
     private static String daum_client_id = "3830067531028078868";
-    private static String daum_client_secret = "a33b27426654f4859d3be713f256362a";
+    private static String daum_client_secret = "";
     private static String daum_authorization_endpoint = "https://apis.daum.net/oauth2/authorize";
     private static String daum_token_endpoint = "https://apis.daum.net/oauth2/token";
     private static String daum_profile_url = "https://apis.daum.net/user/v1/show.json?access_token=";

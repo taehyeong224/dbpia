@@ -1,45 +1,40 @@
 package koreatech.cse.domain;
 
+import java.util.Collection;
+import java.util.List;
+import koreatech.cse.domain.Authority;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
-
-public class User implements UserDetails {
+/*
+ * This class specifies class file version 49.0 but uses Java 6 signatures.  Assumed Java 6.
+ */
+public class User
+        implements UserDetails {
     private int id;
     private String name;
     private String email;
     private String password;
     private int age;
     private String key;
+    private List<Authority> authorities;
 
-    @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", key='" + key + '\'' +
-                ", authorities=" + authorities +
-                '}';
+        return "User{id=" + this.id + ", name='" + this.name + '\'' + ", email='" + this.email + '\'' + ", password='" + this.password + '\'' + ", age=" + this.age + ", key='" + this.key + '\'' + ", authorities=" + this.authorities + '}';
     }
 
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     public void setKey(String key) {
         this.key = key;
     }
 
-    private List<Authority> authorities;
-
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -47,7 +42,7 @@ public class User implements UserDetails {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -55,7 +50,7 @@ public class User implements UserDetails {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -63,15 +58,15 @@ public class User implements UserDetails {
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return this.authorities;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public String getUsername() {
-        return email;
+        return this.email;
     }
 
     public boolean isAccountNonExpired() {
@@ -90,7 +85,6 @@ public class User implements UserDetails {
         return true;
     }
 
-
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
     }
@@ -100,7 +94,7 @@ public class User implements UserDetails {
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {
@@ -109,11 +103,10 @@ public class User implements UserDetails {
 
     public static User current() {
         try {
-            return (User) SecurityContextHolder.getContext()
-                    .getAuthentication().getPrincipal();
-        } catch (Exception e) {
+            return (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+        catch (Exception e) {
             return null;
         }
     }
-
 }

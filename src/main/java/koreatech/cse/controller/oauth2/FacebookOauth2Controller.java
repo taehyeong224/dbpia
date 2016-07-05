@@ -25,9 +25,9 @@ import java.util.HashMap;
 @Controller
 @RequestMapping("/oauth2")
 public class FacebookOauth2Controller {
-    private static String facebook_redirect_uri = "http://localhost:8080/oauth2/facebook_callback";
+    private static String facebook_redirect_uri = "http://kth409.synology.me/wsc/oauth2/facebook_callback";
     private static String facebook_client_id = "1696056593957213";
-    private static String facebook_client_secret = "b52134f336c21b150fea4db06976e519";
+    private static String facebook_client_secret = "";
     private static String facebook_authorization_endpoint = "https://www.facebook.com/dialog/oauth";
     private static String facebook_token_endpoint = "https://graph.facebook.com/v2.5/oauth/access_token";
 

@@ -2,8 +2,8 @@ package koreatech.cse.domain.total;
 
 import java.util.List;
 
-/**
- * Created by kth on 2015. 11. 30..
+/*
+ * This class specifies class file version 49.0 but uses Java 6 signatures.  Assumed Java 6.
  */
 public class Books {
     private List<Book> book;
@@ -16,15 +16,12 @@ public class Books {
         this.book = null;
     }
 
-    @Override
     public String toString() {
-        return "Books{" +
-                "books=" + book +
-                '}';
+        return "Books{books=" + this.book + '}';
     }
 
     public List<Book> getBook() {
-        return book;
+        return this.book;
     }
 
     public void setBook(List<Book> books) {

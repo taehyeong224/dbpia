@@ -1,8 +1,7 @@
 package koreatech.cse.domain.total;
 
-/**
- * Created by kth on 2015. 11. 30..
- */
+import koreatech.cse.domain.total.Result;
+
 public class Total {
     private String keyword;
     private Result result;
@@ -18,23 +17,19 @@ public class Total {
     }
 
     public Result getResult() {
-        return result;
+        return this.result;
     }
 
     public void setResult(Result result) {
         this.result = result;
     }
 
-    @Override
     public String toString() {
-        return "Total{" +
-                "keyword='" + keyword + '\'' +
-                ", result=" + result +
-                '}';
+        return "Total{keyword='" + this.keyword + '\'' + ", result=" + this.result + '}';
     }
 
     public String getKeyword() {
-        return keyword;
+        return this.keyword;
     }
 
     public void setKeyword(String keyword) {

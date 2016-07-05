@@ -1,20 +1,12 @@
 package koreatech.cse.domain.total;
 
-/**
- * Created by kth on 2015. 11. 30..
- */
 public class Publication {
     private String issn;
     private String url;
     private String name;
 
-    @Override
     public String toString() {
-        return "Publication{" +
-                "issn='" + issn + '\'' +
-                ", url='" + url + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "Publication{issn='" + this.issn + '\'' + ", url='" + this.url + '\'' + ", name='" + this.name + '\'' + '}';
     }
 
     public Publication(String issn, String url, String name) {
@@ -30,7 +22,7 @@ public class Publication {
     }
 
     public String getIssn() {
-        return issn;
+        return this.issn;
     }
 
     public void setIssn(String issn) {
@@ -38,7 +30,7 @@ public class Publication {
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public void setUrl(String url) {
@@ -46,7 +38,7 @@ public class Publication {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {

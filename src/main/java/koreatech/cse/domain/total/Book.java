@@ -1,140 +1,275 @@
 package koreatech.cse.domain.total;
 
-/**
- * Created by kth on 2015. 11. 30..
- */
 public class Book {
-    protected String title;
-    protected String link;
-    protected String image;
-    protected String author;
-    protected String price;
-    protected String discount;
+    private String author_t;
 
-    public Book(String title, String link, String image, String author, String price, String discount, String publisher, String pubdate, String isbn, String description) {
-        this.title = title;
-        this.link = link;
-        this.image = image;
-        this.author = author;
-        this.price = price;
-        this.discount = discount;
-        this.publisher = publisher;
-        this.pubdate = pubdate;
-        this.isbn = isbn;
-        this.description = description;
-    }
+    private String sale_price;
+
+    private String cover_s_url;
+
+    private String sale_yn;
+
+    private String pub_date;
+
+    private String link;
+
+    private String barcode;
+
+    private String etc_author;
+
+    private String status_des;
+
+    private String author;
+
+    private String title;
+
+    private String category;
+
+    private String pub_nm;
+
+    private String translator;
+
+    private String description;
+
+    private String isbn;
+
+    private String ebook_barcode;
+
+    private String isbn13;
+
+    private String list_price;
 
     public Book() {
-        this.title = null;
-        this.link = null;
-        this.image = null;
-        this.author = null;
-        this.price = null;
-        this.discount = null;
-        this.publisher = null;
-        this.pubdate = null;
-        this.isbn = null;
-        this.description = null;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", link='" + link + '\'' +
-                ", image='" + image + '\'' +
-                ", author='" + author + '\'' +
-                ", price='" + price + '\'' +
-                ", discount='" + discount + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", pubdate='" + pubdate + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    private String cover_l_url;
+
+    public String getAuthor_t ()
+    {
+        return author_t;
     }
 
-    public String getTitle() {
-        return title;
+    public void setAuthor_t (String author_t)
+    {
+        this.author_t = author_t;
     }
 
-    public void setTitle(String title) {
+    public Book(String author_t, String sale_price, String cover_s_url, String sale_yn, String pub_date, String link, String barcode, String etc_author, String status_des, String author, String title, String category, String pub_nm, String translator, String description, String isbn, String ebook_barcode, String isbn13, String list_price, String cover_l_url) {
+        this.author_t = author_t;
+        this.sale_price = sale_price;
+        this.cover_s_url = cover_s_url;
+        this.sale_yn = sale_yn;
+        this.pub_date = pub_date;
+        this.link = link;
+        this.barcode = barcode;
+        this.etc_author = etc_author;
+        this.status_des = status_des;
+        this.author = author;
         this.title = title;
+        this.category = category;
+        this.pub_nm = pub_nm;
+        this.translator = translator;
+        this.description = description;
+        this.isbn = isbn;
+        this.ebook_barcode = ebook_barcode;
+        this.isbn13 = isbn13;
+        this.list_price = list_price;
+        this.cover_l_url = cover_l_url;
     }
 
-    public String getLink() {
+    public String getSale_price ()
+    {
+        return sale_price;
+    }
+
+    public void setSale_price (String sale_price)
+    {
+        this.sale_price = sale_price;
+    }
+
+    public String getCover_s_url ()
+    {
+        return cover_s_url;
+    }
+
+    public void setCover_s_url (String cover_s_url)
+    {
+        this.cover_s_url = cover_s_url;
+    }
+
+    public String getSale_yn ()
+    {
+        return sale_yn;
+    }
+
+    public void setSale_yn (String sale_yn)
+    {
+        this.sale_yn = sale_yn;
+    }
+
+    public String getPub_date ()
+    {
+        return pub_date;
+    }
+
+    public void setPub_date (String pub_date)
+    {
+        this.pub_date = pub_date;
+    }
+
+    public String getLink ()
+    {
         return link;
     }
 
-    public void setLink(String link) {
+    public void setLink (String link)
+    {
         this.link = link;
     }
 
-    public String getImage() {
-        return image;
+    public String getBarcode ()
+    {
+        return barcode;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setBarcode (String barcode)
+    {
+        this.barcode = barcode;
     }
 
-    public String getAuthor() {
+    public String getEtc_author ()
+    {
+        return etc_author;
+    }
+
+    public void setEtc_author (String etc_author)
+    {
+        this.etc_author = etc_author;
+    }
+
+    public String getStatus_des ()
+    {
+        return status_des;
+    }
+
+    public void setStatus_des (String status_des)
+    {
+        this.status_des = status_des;
+    }
+
+    public String getAuthor ()
+    {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor (String author)
+    {
         this.author = author;
     }
 
-    public String getPrice() {
-        return price;
+    public String getTitle ()
+    {
+        return title;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setTitle (String title)
+    {
+        this.title = title;
     }
 
-    public String getDiscount() {
-        return discount;
+    public String getCategory ()
+    {
+        return category;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
+    public void setCategory (String category)
+    {
+        this.category = category;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getPub_nm ()
+    {
+        return pub_nm;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setPub_nm (String pub_nm)
+    {
+        this.pub_nm = pub_nm;
     }
 
-    public String getPubdate() {
-        return pubdate;
+    public String getTranslator ()
+    {
+        return translator;
     }
 
-    public void setPubdate(String pubdate) {
-        this.pubdate = pubdate;
+    public void setTranslator (String translator)
+    {
+        this.translator = translator;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getDescription() {
+    public String getDescription ()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription (String description)
+    {
         this.description = description;
     }
 
-    protected String publisher;
-    protected String pubdate;
-    protected String isbn;
-    protected String description;
+    public String getIsbn ()
+    {
+        return isbn;
+    }
+
+    public void setIsbn (String isbn)
+    {
+        this.isbn = isbn;
+    }
+
+    public String getEbook_barcode ()
+    {
+        return ebook_barcode;
+    }
+
+    public void setEbook_barcode (String ebook_barcode)
+    {
+        this.ebook_barcode = ebook_barcode;
+    }
+
+    public String getIsbn13 ()
+    {
+        return isbn13;
+    }
+
+    public void setIsbn13 (String isbn13)
+    {
+        this.isbn13 = isbn13;
+    }
+
+    public String getList_price ()
+    {
+        return list_price;
+    }
+
+    public void setList_price (String list_price)
+    {
+        this.list_price = list_price;
+    }
+
+    public String getCover_l_url ()
+    {
+        return cover_l_url;
+    }
+
+    public void setCover_l_url (String cover_l_url)
+    {
+        this.cover_l_url = cover_l_url;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ClassPojo [author_t = "+author_t+", sale_price = "+sale_price+", cover_s_url = "+cover_s_url+", sale_yn = "+sale_yn+", pub_date = "+pub_date+", link = "+link+", barcode = "+barcode+", etc_author = "+etc_author+", status_des = "+status_des+", author = "+author+", title = "+title+", category = "+category+", pub_nm = "+pub_nm+", translator = "+translator+", description = "+description+", isbn = "+isbn+", ebook_barcode = "+ebook_barcode+", isbn13 = "+isbn13+", list_price = "+list_price+", cover_l_url = "+cover_l_url+"]";
+    }
 }

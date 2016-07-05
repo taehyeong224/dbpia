@@ -1,8 +1,10 @@
 package koreatech.cse.domain.total;
 
-/**
- * Created by kth on 2015. 11. 30..
- */
+import koreatech.cse.domain.total.Authors;
+import koreatech.cse.domain.total.Books;
+import koreatech.cse.domain.total.Publication;
+import koreatech.cse.domain.total.Publisher;
+
 public class Item {
     private String ctype;
     private String title;
@@ -41,24 +43,12 @@ public class Item {
         this.books = null;
     }
 
-    @Override
     public String toString() {
-        return "Item{" +
-                "ctype='" + ctype + '\'' +
-                ", title='" + title + '\'' +
-                ", authors=" + authors +
-                ", pages='" + pages + '\'' +
-                ", preview='" + preview + '\'' +
-                ", link_url='" + link_url + '\'' +
-                ", link_api='" + link_api + '\'' +
-                ", publisher=" + publisher +
-                ", publication=" + publication +
-                ", books=" + books +
-                '}';
+        return "Item{ctype='" + this.ctype + '\'' + ", title='" + this.title + '\'' + ", authors=" + this.authors + ", pages='" + this.pages + '\'' + ", preview='" + this.preview + '\'' + ", link_url='" + this.link_url + '\'' + ", link_api='" + this.link_api + '\'' + ", publisher=" + (Object)this.publisher + ", publication=" + (Object)this.publication + ", books=" + this.books + '}';
     }
 
     public Books getBooks() {
-        return books;
+        return this.books;
     }
 
     public void setBooks(Books books) {
@@ -66,7 +56,7 @@ public class Item {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -74,7 +64,7 @@ public class Item {
     }
 
     public Authors getAuthors() {
-        return authors;
+        return this.authors;
     }
 
     public void setAuthors(Authors authors) {
@@ -82,7 +72,7 @@ public class Item {
     }
 
     public String getPages() {
-        return pages;
+        return this.pages;
     }
 
     public void setPages(String pages) {
@@ -90,7 +80,7 @@ public class Item {
     }
 
     public String getPreview() {
-        return preview;
+        return this.preview;
     }
 
     public void setPreview(String preview) {
@@ -98,7 +88,7 @@ public class Item {
     }
 
     public String getLink_url() {
-        return link_url;
+        return this.link_url;
     }
 
     public void setLink_url(String link_url) {
@@ -106,7 +96,7 @@ public class Item {
     }
 
     public String getLink_api() {
-        return link_api;
+        return this.link_api;
     }
 
     public void setLink_api(String link_api) {
@@ -114,7 +104,7 @@ public class Item {
     }
 
     public Publisher getPublisher() {
-        return publisher;
+        return this.publisher;
     }
 
     public void setPublisher(Publisher publisher) {
@@ -122,7 +112,7 @@ public class Item {
     }
 
     public Publication getPublication() {
-        return publication;
+        return this.publication;
     }
 
     public void setPublication(Publication publication) {
@@ -130,8 +120,7 @@ public class Item {
     }
 
     public String getCtype() {
-
-        return ctype;
+        return this.ctype;
     }
 
     public void setCtype(String ctype) {

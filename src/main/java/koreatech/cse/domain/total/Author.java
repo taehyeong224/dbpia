@@ -1,10 +1,5 @@
 package koreatech.cse.domain.total;
 
-
-
-/**
- * Created by kth on 2015. 11. 30..
- */
 public class Author {
     private String order;
     private String name;
@@ -17,7 +12,6 @@ public class Author {
     }
 
     public Author(String order) {
-
         this.order = order;
     }
 
@@ -27,17 +21,12 @@ public class Author {
         this.url = null;
     }
 
-    @Override
     public String toString() {
-        return "Author{" +
-                "order='" + order + '\'' +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        return "Author{order='" + this.order + '\'' + ", name='" + this.name + '\'' + ", url='" + this.url + '\'' + '}';
     }
 
     public String getOrder() {
-        return order;
+        return this.order;
     }
 
     public void setOrder(String order) {
@@ -45,7 +34,7 @@ public class Author {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -53,7 +42,7 @@ public class Author {
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public void setUrl(String url) {

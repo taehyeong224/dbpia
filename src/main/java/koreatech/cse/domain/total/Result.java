@@ -1,20 +1,16 @@
 package koreatech.cse.domain.total;
 
-/**
- * Created by kth on 2015. 11. 30..
- */
+import koreatech.cse.domain.total.Items;
+
 public class Result {
     private Items items;
 
-    @Override
     public String toString() {
-        return "Result{" +
-                "items=" + items +
-                '}';
+        return "Result{items=" + this.items + '}';
     }
 
     public Items getItems() {
-        return items;
+        return this.items;
     }
 
     public Result(Items items) {
